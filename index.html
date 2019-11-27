@@ -11,8 +11,38 @@
     <title>meetingDB</title>
   </head>
   <body>
-    <h1>Hello, world!</h1>
+  	<div class="container">
+  		<div class="row ">
+            <div class="col-auto ">
+			    <form action="" method="get">
+					<input type="submit" name="開會資訊" value="開會資訊">
+				</form>
+			</div>
+			<div class="col-auto ">
+				<form action="teacher.php" method="get">
+					<input type="submit" name="老師資訊" value="老師資訊">
+				</form>
+			</div>
+			<div class="col-auto ">
+				<form action="student.php" method="get">
+					<input type="submit" name="學生資訊" value="學生資訊">
+				</form>
+			</div>
+			<div class="col-auto ">
+				<form action="inform.php" method="get">
+					搜尋<input type="text" name="關鍵字" >
+				</form>
+			</div>
+		</div>
 
+		<br><br>
+
+		<div name="table">
+			
+		</div>
+
+	</div>
+	
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
