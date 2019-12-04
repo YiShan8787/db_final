@@ -44,17 +44,17 @@
 			
 		</div>
 
-		<div class='row '>
-			<div class = 'col-3 text-center'>
+		<div class='row align-items-center justify-content-center'>
+			<div class = 'col-2 text-center'>
 			ID
 			</div>
-			<div class = 'col-3 text-center'>
+			<div class = 'col-2 text-center'>
 			name
 			</div>
-			<div class = 'col-3 text-center'>
+			<div class = 'col-2 text-center'>
 			school
 			</div>
-			<div class = 'col-3 text-center'>
+			<div class = 'col-2 text-center'>
 			field
 			</div>
 		</div>
@@ -76,11 +76,11 @@
 	$result = $stmt -> fetchAll();
 	foreach($result as $this_row)
 	{
-		echo "<div class = 'row'>";
-		echo "<div class = 'col-3 text-center'>".$this_row['ID']."</div>";
-		echo "<div class = 'col-3 text-center'>".$this_row['name']."</div>";
-		echo "<div class = 'col-3 text-center'>".$this_row['school']."</div>";
-		echo "<div class = 'col-3 text-center'>".$this_row['field']."</div>";
+		echo "<div class = 'row align-items-center justify-content-center'>";
+		echo "<div class = 'col-2 text-center'>".$this_row['ID']."</div>";
+		echo "<div class = 'col-2 text-center'>".$this_row['name']."</div>";
+		echo "<div class = 'col-2 text-center'>".$this_row['school']."</div>";
+		echo "<div class = 'col-2 text-center'>".$this_row['field']."</div>";
 		echo "</div>";
 	}
 	echo "</div>";
