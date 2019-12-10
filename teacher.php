@@ -7,7 +7,7 @@
     <!-- Required meta tags -->
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
-
+<link rel='stylesheet' href='style.css'>
     <!-- Bootstrap CSS -->
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous'>
 
@@ -44,20 +44,16 @@
 			
 		</div>
 
-		<div class='row align-items-center justify-content-center'>
-			<div class = 'col-2 text-center'>
-			ID
-			</div>
-			<div class = 'col-2 text-center'>
-			name
-			</div>
-			<div class = 'col-2 text-center'>
-			school
-			</div>
-			<div class = 'col-2 text-center'>
-			field
-			</div>
-		</div>
+		<div class='col custom-table-width'style='  '>
+			<table class='table table-striped 'style='width:80%;margin-left:10%  '>
+		    	<thead>
+			    	<tr>
+				      	<th scope='col'>Name</th>
+				      	<th scope='col'>School</th>
+				      	<th scope='col'>Field</th>
+				      	
+			    	</tr>
+		  		</thead>
 	
 		
 	
@@ -76,13 +72,15 @@
 	$result = $stmt -> fetchAll();
 	foreach($result as $this_row)
 	{
-		echo "<div class = 'row align-items-center justify-content-center'>";
-		echo "<div class = 'col-2 text-center'>".$this_row['ID']."</div>";
-		echo "<div class = 'col-2 text-center'>".$this_row['name']."</div>";
-		echo "<div class = 'col-2 text-center'>".$this_row['school']."</div>";
-		echo "<div class = 'col-2 text-center'>".$this_row['field']."</div>";
-		echo "</div>";
+		echo"<tr>";
+      	echo"<th scope='row'>".$this_row['name']."</th>";
+      	echo"<td >".$this_row['school']."</td>";
+      	echo"<td >".$this_row['field']."</td>";
+    	echo"</tr>";
 	}
-	echo "</div>";
+	echo"</tbody>";
+		echo"</table>";
+    echo "</div>";
+echo "</div>";
 
 ?>
