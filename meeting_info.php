@@ -38,22 +38,31 @@
 				</form>
 			</div>
 		</div>
-
-		<br><br>
+		
+		
 
 			
 		</div>
-	<div class='col custom-table-width'style='  '>
-	
-		<table class='table table-striped 'style='width:80%;margin-left:10%  '>
-    	<thead>
-    	<tr>
-      	<th scope='col'>Date</th>
-      	<th scope='col'>Time</th>
-      	<th scope='col'>Discription</th>
-      	<th scope='col'>Duration</th>
-    	</tr>
-  		</thead>
+		<div class='col custom-table-width'style='  '>
+			<div class='row'>
+				<div class='button_meeting_add'style='width:80%;margin-left:10.85%'>
+					
+						<form  action='meeting_add.php' method='get'>
+							<input class='btn btn-outline-secondary' type='submit' name='add' value='add'>
+						</form>
+					
+				</div>
+			</div>
+			<table class='table table-striped 'style='width:80%;margin-left:10%  '>
+				
+		    	<thead>
+			    	<tr>
+				      	<th scope='col'>Date</th>
+				      	<th scope='col'>Time</th>
+				      	<th scope='col'>Discription</th>
+				      	<th scope='col'>Duration</th>
+			    	</tr>
+		  		</thead>
 		
 	
 		
@@ -107,8 +116,7 @@
 
        
     }
-    echo"</tbody>";
-  
+    		echo"</tbody>";
 		echo"</table>";
     echo "</div>";
 echo "</div>";
