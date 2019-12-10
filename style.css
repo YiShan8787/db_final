@@ -1,0 +1,23 @@
+/*{
+	border: solid 1px black;
+}*/
+.custom-table-width {
+  overflow-x: auto;
+  //background-color: red;
+
+  margin-right:30px / 2;     //利用 margin 推回去原本 padding 的空間
+  margin-left: 30px / 2;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.table {
+	 //display: block;
+	 //max-width: 50%;
+	 width:50%;
+  table-layout: fixed;   // 表格和欄寬將根據所給定的寬度來顯示
+  min-width: 200px;     // 避免因寬度不足而字疊在一起（根據表格內容設定寬度）
+}
+.col{
+
+}
