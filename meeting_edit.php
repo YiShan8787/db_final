@@ -45,10 +45,10 @@
 		</div>
 		<div class='col custom-table-width'style='  '>
 			<div class='row'>
-				<div class='button_meeting_edit'style='width:80%;margin-left:10.85%'>
+				<div class='button_meeting_add'style='width:80%;margin-left:10.85%'>
 					
-						<form  action='meeting_edit.php' method='get'>
-							<input class='btn btn-outline-secondary' type='submit' name='edit' value='edit'>
+						<form  action='meeting_add.php' method='get'>
+							<input class='btn btn-outline-secondary' type='submit' name='add' value='add'>
 						</form>
 					
 				</div>
@@ -61,6 +61,7 @@
 				      	<th scope='col'>Time</th>
 				      	<th scope='col'>Discription</th>
 				      	<th scope='col'>Duration</th>
+				      	<th scope='col'></th>
 			    	</tr>
 		  		</thead>
 		
@@ -109,6 +110,13 @@
       	echo"<td >".$this_row['time']."</td>";
       	echo"<td >".$this_row['description']."</td>";
       	echo"<td >".$this_row['duration']."</td>";
+      	echo"<td><form  action='meeting_delsave.php' method='post'>
+
+	      		<input type='hidden' name='m_date' value=".$this_row['m_date'].">
+	      		<input type='hidden' name='time' value=".$this_row['time'].">
+				<input class='btn btn-outline-danger btn-sm' type='submit' name='X' value='X'>
+			</form></td>";
+      	//echo"<td ><button type='button' class=' btn btn-outline-danger btn-sm '>X</button></td>";
     	echo"</tr>";
   		
 
