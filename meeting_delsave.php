@@ -1,11 +1,11 @@
 <?php
     include_once "db_conn.php";
-	$date = $_POST['m_date'];
-	$time=$_POST['time'];
+	$m_date = $_GET['m_date'];
+	$time=$_GET['time'];
 
 	echo "<script>console.log('Debug Objects: 1' );</script>";
-	$db_link=mysqli_connect("localhost","root","") or die("無法連接".mysqli_error());
-    echo "<script>console.log('date:" . $date . "' );</script>";
+	//$db_link=mysqli_connect("localhost","root","",'db_meeting') or die("無法連接".mysqli_error());
+    echo "<script>console.log('date:" . $m_date . "' );</script>";
     echo "<script>console.log('time:" . $time . "' );</script>";
     $query=("select * from meeting_info");
     $stmt=$db->prepare($query);
@@ -17,13 +17,13 @@
     	echo "<script>console.log('Debug Objects: time:" . $result[$i]["time"] . "' );</script>";
     }
 
-	$query=("DELETE FROM meeting_info WHERE m_date='2019-12-03'" );
+	$query=("DELETE FROM meeting_info WHERE m_date='$m_date'" );
     $stmt=$db->prepare($query);
     $stmt->execute();
-    //$result=$stmt->fetchAll();
-    //$sql_query = "DELETE FROM meeting_info WHERE date = $date AND time=$time";
-    //mysqli_query($db_link,$sql_query)or die ("無法刪除".mysqli_error());
-
+    $result=$stmt->fetchAll();
+    //$sql_query = "DELETE FROM 'meeting_info' WHERE 'meeting_info'.'duration'=2";
+    //$del = mysqli_query($db_link,$query)or die ("無法刪除".mysqli_error($db_link));
+	//echo "<script>console.log('Debug Objects: date:" . $del . "' );</script>";
 
 	echo "<script>console.log('after delete' );</script>";
 	 $query=("select * from meeting_info");
@@ -36,7 +36,7 @@
     }
 	
 	//echo"刪除成功";
-    mysqli_close($db_link);
+    //mysqli_close($db_link);
 
-    //header("Location: meeting_edit.php");
+    header("Location: meeting_edit.php");
 ?>

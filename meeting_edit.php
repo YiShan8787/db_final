@@ -110,7 +110,7 @@
       	echo"<td >".$this_row['time']."</td>";
       	echo"<td >".$this_row['description']."</td>";
       	echo"<td >".$this_row['duration']."</td>";
-      	echo"<td><form  action='meeting_delsave.php' method='post'>
+      	echo"<td><form  action='meeting_delsave.php' method='get'>
 
 	      		<input type='hidden' name='m_date' value=".$this_row['m_date'].">
 	      		<input type='hidden' name='time' value=".$this_row['time'].">
