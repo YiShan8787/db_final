@@ -17,7 +17,7 @@
     	echo "<script>console.log('Debug Objects: time:" . $result[$i]["time"] . "' );</script>";
     }
 
-	$query=("DELETE FROM meeting_info WHERE m_date='$m_date'" );
+	$query=("DELETE FROM meeting_info WHERE m_date='$m_date' AND time='$time'" );
     $stmt=$db->prepare($query);
     $stmt->execute();
     $result=$stmt->fetchAll();
