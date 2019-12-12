@@ -67,11 +67,9 @@
 	
 		
 	
-	</div>
 	
-	<script src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous'></script>
-    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl' crossorigin='anonymous'></script>
+	
+	
 	
 	
     ";
@@ -83,18 +81,6 @@
     echo"<tbody >";
     foreach($result as $this_row)
     {
-    	//echo"<table class='table table-striped'>";
-    	/*echo"<thead>";
-    	echo"<tr>";
-      	echo"<th scope='col'>".$this_row['date']."</th>";
-      	echo"<th scope='col'>".$this_row['time']."</th>";
-      	echo"<th scope='col'>".$this_row['description']."</th>";
-      	echo"<th scope='col'>".$this_row['duration']."</th>";
-    	echo"</tr>";
-  		echo"</thead>";*/
-  		
-  	
-
   	/*switch($this_row['importance'])//邱:不要刪
     	{
     		case 0:echo"<tr style='background-color:#ff8a8a'>";break;
@@ -110,16 +96,13 @@
       	echo"<td >".$this_row['description']."</td>";
       	echo"<td >".$this_row['duration']."</td>";
     	echo"</tr>";
-  		
-
-      
-
-       
     }
     		echo"</tbody>";
 		echo"</table>";
     echo "</div>";
 echo "</div>";
-
+echo"<script src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl' crossorigin='anonymous'></script>"
 
 ?>

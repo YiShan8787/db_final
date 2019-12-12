@@ -50,7 +50,6 @@
 					
 				  </div>
 				</div>
-
 			</div>
 			
 			<div class="col-auto " style="margin-left: -20px;display:inline-block;">
@@ -59,52 +58,6 @@
 					<input type="submit" name="searchButton" value="search">
 				
 			</div>
-			<div class='col custom-table-width'style='  '>
-			<div class='row'>
-				<div class='button_meeting_edit'style='width:80%;margin-left:10.85%'>
-					
-						<form  action='meeting_edit.php' method='get'>
-							<input class='btn btn-outline-secondary' type='submit' name='edit' value='edit'>
-						</form>
-					
-				</div>
-			</div>
-			<table class='table table-striped 'style='width:80%;margin-left:10%  '>
-				
-		    	<thead>
-			    	<tr>
-				      	<th scope='col'>Date</th>
-				      	<th scope='col'>Time</th>
-				      	<th scope='col'>Discription</th>
-				      	<th scope='col'>Duration</th>
-			    	</tr>
-		  		</thead>
-		  		<?php
-		  			include_once "db_conn.php";  
-		  			$query = ("select * from meeting_info");
-				    $stmt = $db->prepare($query);
-				    $stmt -> execute();
-				    $result = $stmt -> fetchAll();
-				    echo"<tbody >";
-				    foreach($result as $this_row)
-				    {
-				  	/*switch($this_row['importance'])//邱:不要刪
-				    	{
-				    		case 0:echo"<tr style='background-color:#ff8a8a'>";break;
-				    		case 1:echo"<tr style='background-color:#faf8b6'>";break;
-				    		case 2:echo"<tr style='background-color:#cbffbf'>";break;
-				    		case 3:echo"<tr style='background-color:#9eecff'>";break;
-				    		case 4:echo"<tr style='background-color:#9eecff'>";break;
-				    	}
-				    */
-				    	echo"<tr>";
-				      	echo"<th scope='row'>".$this_row['m_date']."</th>";
-				      	echo"<td >".$this_row['time']."</td>";
-				      	echo"<td >".$this_row['description']."</td>";
-				      	echo"<td >".$this_row['duration']."</td>";
-				    	echo"</tr>";
-				    }
-    			?>
 		</form>
 		</div>
 		<br><br>
