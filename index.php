@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!doctype html>
 <html lang="zn">
   <head>
@@ -28,12 +29,35 @@
 					<input type="submit" name="學生資訊" value="學生資訊">
 				</form>
 			</div>
-			<div class="col-auto">
-				<a class="btn btn-primary" href="login.php" >登入</a>
-			</div>
-			<div class="col-auto">
-				<a class="btn btn-primary" href="signup.php" >註冊</a>
-			</div>
+			<?php
+			if(!isset($_SESSION['account'])) //若不存在此變數，代表沒登入 
+			{
+				echo'
+				<div class="col-auto">
+					<a class="btn btn-primary" href="login.php" >登入</a>
+				</div>
+				<div class="col-auto">
+					<a class="btn btn-primary" href="signup.php" >註冊</a>
+				</div>';
+			}
+			else if(isset($_SESSION['account'])==null)
+			{
+				echo'
+				<div class="col-auto">
+					<a class="btn btn-primary" href="login.php" >登入</a>
+				</div>
+				<div class="col-auto">
+					<a class="btn btn-primary" href="signup.php" >註冊</a>
+				</div>';
+			}
+
+			else{
+				echo'
+				<div class="col-auto">
+					<a class="btn btn-primary" href="logout.php" >登出</a>
+				</div>';
+			}
+			?>
 			
 		</div>
 		<div class="row align-items-center justify-content-center" style="margin-top: 10px;">

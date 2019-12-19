@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php
     include_once "db_conn.php";
 
@@ -15,7 +16,7 @@
 	</head>
 	
 	
-	<div class='container'>
+	<div class='container'>	
   		<div class='row '>
             <div class='col-auto '>
 			    <form action='meeting_info.php' method='get'>
@@ -43,7 +44,15 @@
 
 			
 		</div>
-		<div class='col custom-table-width'style='  '>
+		<div class='col custom-table-width'style='  '>";
+	
+		if(!isset($_SESSION['account'])) //若不存在此變數，代表沒登入
+		{
+			echo"you are not login";
+		}
+		else if($_SESSION['account'] != null) 
+		{
+			echo"
 			<div class='row'>
 				<div class='button_meeting_edit'style='width:80%;margin-left:10.85%'>
 					
@@ -52,7 +61,11 @@
 						</form>
 					
 				</div>
-			</div>
+			</div>";
+		}
+		
+		
+		echo"
 			<table class='table table-striped 'style='width:80%;margin-left:10%  '>
 				
 		    	<thead>
@@ -63,7 +76,7 @@
 				      	<th scope='col'>Duration</th>
 			    	</tr>
 		  		</thead>
-		
+		";
 	
 		
 	
@@ -72,7 +85,7 @@
 	
 	
 	
-    ";
+    
     
     $query = ("select * from meeting_info");
     $stmt = $db->prepare($query);
