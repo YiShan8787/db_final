@@ -23,10 +23,16 @@
 					<input type="submit" name="老師資訊" value="老師資訊">
 				</form>
 			</div>
-			<div class="col-auto ">
+			<div class="col-auto mr-auto">
 				<form action="student.php" method="get">
 					<input type="submit" name="學生資訊" value="學生資訊">
 				</form>
+			</div>
+			<div class="col-auto">
+				<a class="btn btn-primary" href="login.php" >登入</a>
+			</div>
+			<div class="col-auto">
+				<a class="btn btn-primary" href="signup.php" >註冊</a>
 			</div>
 			
 		</div>
