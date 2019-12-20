@@ -23,7 +23,7 @@
                     <div class = "w-100"></div>
                     <div class = "col-md-auto">
                     <label>
-                        <input type = checkbox value>我已詳閱<a href="">條款細則</a>
+                        <input type = checkbox name = "checkbox">我已詳閱<a href="">條款細則</a>
                     </label>
                     </div>
                     <div class = "w-100"></div>
@@ -45,34 +45,45 @@
     include_once "db_conn.php";
 
     header("Content-Type: text/html; charset=utf8");
+    
     if(!isset($_POST["submit"])){
         exit("請按下註冊");
     }//檢測是否有submit操作 
-
+    
     $account = $_POST['account'];
     $password = $_POST['password'];
     $repassword = $_POST['repassword'];
+    $checkbox = $_POST['checkbox'];
     //判斷帳號密碼是否為空
     //確認密碼輸入的正確性
-    if($account != null && $password != null && $repassword != null && $password == $repassword)
+    if($checkbox)
     {
-        //新增資料進資料庫
-        $query = ("insert into admin (account, password, is_online) values ('$account', '$password', 1)");
-        $stmt = $db->prepare($query);
-        $result = $stmt -> execute();
-        if($result)
+        if($account != null && $password != null && $repassword != null && $password == $repassword)
         {
-            echo '註冊成功';
-            $_SESSION['account'] = $account;
-            echo '<meta http-equiv=REFRESH CONTENT=5;url=index.php>';
+            //新增資料進資料庫
+            $query = ("insert into admin (account, password, is_online) values ('$account', '$password', 1)");
+            $stmt = $db->prepare($query);
+            $result = $stmt -> execute();
+            if($result)
+            {
+                echo '註冊成功';
+                $_SESSION['account'] = $account;
+                echo '<meta http-equiv=REFRESH CONTENT=5;url=index.php>';
+            }
+            else
+            {
+                echo '註冊失敗';
+                echo "
+                <script>setTimeout(function(){window.location.href='register.php';},1000);</script>
+                ";//如果錯誤使用js 1秒後跳轉到註冊頁面重試;
+                exit();
+            }
         }
-        else
-        {
-            echo '註冊失敗';
-            echo "
-            <script>setTimeout(function(){window.location.href='register.php';},1000);</script>
-            ";//如果錯誤使用js 1秒後跳轉到註冊頁面重試;
-            exit();
-        }
+    }
+    else
+    {
+        echo "<script>alert('還敢不看條款細則阿冰鳥')
+              setTimeout(function(){window.location.href='register.php';},100);
+             </script>;";
     }
 ?>
