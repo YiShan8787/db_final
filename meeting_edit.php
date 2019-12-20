@@ -53,13 +53,13 @@
 					
 				</div>
 			</div>
-			<table class='table table-striped 'style='width:80%;margin-left:10%  '>
+			<table class='table table-striped table-responsive'style='width:80%;margin-left:10%  '>
 				
 		    	<thead>
 			    	<tr>
 				      	<th scope='col'>Date</th>
 				      	<th scope='col'>Time</th>
-				      	<th scope='col'>Discription</th>
+				      	<th scope='col'>Description</th>
 				      	<th scope='col'>Duration</th>
 				      	<th scope='col'></th>
 			    	</tr>
@@ -105,17 +105,27 @@
     		case 4:echo"<tr style='background-color:#9eecff'>";break;
     	}
     */
+    	$d=$this_row['m_date'];
+    	$t=$this_row['time'];
+    	$d1=$this_row['description'];
+    	$d2=$this_row['duration'];
     	echo"<tr>";
-      	echo"<th scope='row'>".$this_row['m_date']."</th>";
-      	echo"<td >".$this_row['time']."</td>";
-      	echo"<td >".$this_row['description']."</td>";
-      	echo"<td >".$this_row['duration']."</td>";
-      	echo"<td><form  action='meeting_delsave.php' method='get'>
+    	echo"<td><form class='form-group' action='meeting_modify.php' method='get'>";
+      	echo"<th scope='row'><input class='form-control form-control-sm' type='text' name='m_m_date' value=".$d." ></th>";
+      	echo"<td ><input class='form-control form-control-sm' type='text' name='m_time' value=".$t." ></td>";
+      	echo"<td ><textarea name='m_description2' class='form-control'   aria-label='With textarea' >".$d1."</textarea></td>";
+      	echo"<td ><input class='form-control form-control-sm' type='text' name='m_duration' value=".$d2." ></td>";
+      	echo"<input type='hidden' name='m_date' value=".$this_row['m_date'].">";
+      	echo"<input type='hidden' name='time' value=".$this_row['time'].">";
+      	echo"<td><input class='btn btn-outline-warning btn-sm ' type='submit' name='modify' value='修改'></td>";
+      	echo"</td></form>";
+      	echo"<td ><form class='form-group ' action='meeting_delsave.php' method='get'>
 
 	      		<input type='hidden' name='m_date' value=".$this_row['m_date'].">
 	      		<input type='hidden' name='time' value=".$this_row['time'].">
-				<input class='btn btn-outline-danger btn-sm' type='submit' name='X' value='X'>
-			</form></td>";
+				<input class='btn btn-outline-danger btn-sm ' type='submit' name='X' value='刪除'>
+				</form></td>";
+		
       	//echo"<td ><button type='button' class=' btn btn-outline-danger btn-sm '>X</button></td>";
     	echo"</tr>";
   		

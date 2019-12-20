@@ -1,7 +1,7 @@
 <?php
     include_once "db_conn.php";
 $times=$_POST["time"];
-$discription=$_POST["discription"];
+$description=$_POST["description"];
 $output = explode(" ", $times);
 $date=$output[0];
 $time=$output[1];
@@ -24,6 +24,6 @@ echo "<script>console.log('Debug Objects: " . $date . "' );</script>";
 echo "<script>console.log('Debug Objects: " . $time . "' );</script>";
    $query=("insert into meeting_info values(?,?,?,?)");
    $stmt=$db->prepare($query);
-   $stmt->execute(array($date,$time,$discription,'2'));
+   $stmt->execute(array($date,$time,$description,'2'));
 header('Location:meeting_info.php')
 ?>

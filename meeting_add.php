@@ -63,8 +63,8 @@
 		      />
 			
 			  <div class='form-group'>
-			    <label for='discription'>描述</label></br>
-			    <textarea name='discription' class='form-control' aria-label='With textarea'></textarea>
+			    <label for='description'>描述</label></br>
+			    <textarea name='description' class='form-control' aria-label='With textarea'></textarea>
 
 			  </div>
 			  <button type='submit' class='btn btn-primary'>Submit</button>
