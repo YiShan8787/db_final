@@ -37,7 +37,7 @@
 					<a class="btn btn-primary" href="login.php" >登入</a>
 				</div>
 				<div class="col-auto">
-					<a class="btn btn-primary" href="signup.php" >註冊</a>
+					<a class="btn btn-primary" href="register.php" >註冊</a>
 				</div>';
 			}
 			else if(isset($_SESSION['account'])==null)

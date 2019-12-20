@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>登陸</title>
+<title>登入</title>
 </head>
 <body>
 <form name="login" action="login.php" method="post">
