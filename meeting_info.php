@@ -31,8 +31,19 @@
 				</form>
 			</div>
 			<div class="col-auto">
-				<form action="inform.php" method="get">
-					搜尋<input type="text" name="關鍵字">
+				<form action="" method="get">
+					<?php
+					if($_GET["keywords"]!="")
+					{
+						echo"<input type='text' name='keywords' value='".$_GET["keywords"]."' >";
+					}
+					else
+					{
+						echo"<input type='text' name='keywords' value='' >";
+					}
+					?>
+					
+					<input type="submit" name="searchButton" value="search">
 				</form>
 			</div>
 			<?php
@@ -78,7 +89,7 @@
 			</div>";
 		}
 		
-		
+				
 		echo"
 			<table class='table table-striped 'style='width:80%;margin-left:10%  '>
 				
@@ -92,38 +103,53 @@
 		  		</thead>
 		";
 	
-		
-	
-	
-	
-	
-	
-	
-    
-    
-    $query = ("select * from meeting_info");
-    $stmt = $db->prepare($query);
-    $stmt -> execute();
-    $result = $stmt -> fetchAll();
-    echo"<tbody >";
-    foreach($result as $this_row)
-    {
-  	/*switch($this_row['importance'])//邱:不要刪
-    	{
-    		case 0:echo"<tr style='background-color:#ff8a8a'>";break;
-    		case 1:echo"<tr style='background-color:#faf8b6'>";break;
-    		case 2:echo"<tr style='background-color:#cbffbf'>";break;
-    		case 3:echo"<tr style='background-color:#9eecff'>";break;
-    		case 4:echo"<tr style='background-color:#9eecff'>";break;
-    	}
-    */
-    	echo"<tr>";
-      	echo"<th scope='row'>".$this_row['m_date']."</th>";
-      	echo"<td >".$this_row['time']."</td>";
-      	echo"<td >".$this_row['description']."</td>";
-      	echo"<td >".$this_row['duration']."</td>";
-    	echo"</tr>";
-    }
+		if(isset($_GET['searchButton']) && $_GET['searchButton'] == 'search')
+				{	
+					echo "<script>console.log('searchButton is clicked' );</script>";
+					$searchvalue=$_GET["keywords"];
+					$query=("select * from meeting_info where m_date Like '%".$searchvalue."%' OR time Like '%".$searchvalue."%' OR description Like '%".$searchvalue."%' OR duration Like '%".$searchvalue."%'");
+					$stmt = $db->prepare($query);
+					$stmt -> execute();
+					$result = $stmt -> fetchAll();
+					echo"<tbody>";
+					foreach($result as $this_row)
+					{
+							
+							echo"<tr>";
+					      	echo"<th scope='row'>".$this_row['m_date']."</th>";
+					      	echo"<td >".$this_row['time']."</td>";
+					      	echo"<td >".$this_row['description']."</td>";
+					      	echo"<td >".$this_row['duration']."</td>";
+					    	echo"</tr>";				    	
+						
+				
+					}
+			}
+			else{
+				    $query = ("select * from meeting_info");
+				    $stmt = $db->prepare($query);
+				    $stmt -> execute();
+				    $result = $stmt -> fetchAll();
+				    echo"<tbody >";
+				    foreach($result as $this_row)
+				    {
+				  	/*switch($this_row['importance'])//邱:不要刪
+				    	{
+				    		case 0:echo"<tr style='background-color:#ff8a8a'>";break;
+				    		case 1:echo"<tr style='background-color:#faf8b6'>";break;
+				    		case 2:echo"<tr style='background-color:#cbffbf'>";break;
+				    		case 3:echo"<tr style='background-color:#9eecff'>";break;
+				    		case 4:echo"<tr style='background-color:#9eecff'>";break;
+				    	}
+				    */
+				    	echo"<tr>";
+				      	echo"<th scope='row'>".$this_row['m_date']."</th>";
+				      	echo"<td >".$this_row['time']."</td>";
+				      	echo"<td >".$this_row['description']."</td>";
+				      	echo"<td >".$this_row['duration']."</td>";
+				    	echo"</tr>";
+				    }
+				}
     		echo"</tbody>";
 		echo"</table>";
     echo "</div>";
