@@ -1,54 +1,68 @@
 <?php session_start(); ?>
+<!doctype html>
+<html lang="zn">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>meetingDB</title>
+</head>
+	
+<body>
+	<div class="container">	
+  		<div class="row justify-content-start">
+            <div class="col-auto ">
+			    <form action="meeting_info.php" method="get">
+					<input class = "btn btn-primary" type="submit" name="開會資訊" value="開會資訊">
+				</form>
+			</div>
+			<div class="col-auto">
+				<form action="teacher.php" method="get">
+					<input class = "btn btn-primary" type="submit" name="老師資訊" value="老師資訊">
+				</form>
+			</div>
+			<div class="col-auto">
+				<form action="student.php" method="get">
+					<input class = "btn btn-primary" type="submit" name="學生資訊" value="學生資訊">
+				</form>
+			</div>
+			<div class="col-auto">
+				<form action="inform.php" method="get">
+					搜尋<input type="text" name="關鍵字">
+				</form>
+			</div>
+			<?php
+			if(isset($_SESSION['account']))
+			{
+				echo '<div class = "col-auto">
+					 <a class="btn btn-primary" href="logout.php" >登出</a>
+					 </div>';
+			}
+			?>
+		</div>			
+	</div>
+	<div class="col custom-table-width"style="  ">
+</body>
+</html>
 <?php
     include_once "db_conn.php";
 
-    echo 
-	"
-	<head>
-    <!-- Required meta tags -->
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
-	<link rel='stylesheet' href='style.css'>
-    <!-- Bootstrap CSS -->
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous'>
-
-    <title>meetingDB</title>
-	</head>
-	
-	
-	<div class='container'>	
-  		<div class='row '>
-            <div class='col-auto '>
-			    <form action='meeting_info.php' method='get'>
-					<input type='submit' name='開會資訊' value='開會資訊'>
-				</form>
-			</div>
-			<div class='col-auto '>
-				<form action='teacher.php' method='get'>
-					<input type='submit' name='老師資訊' value='老師資訊'>
-				</form>
-			</div>
-			<div class='col-auto '>
-				<form action='student.php' method='get'>
-					<input type='submit' name='學生資訊' value='學生資訊'>
-				</form>
-			</div>
-			<div class='col-auto '>
-				<form action='inform.php' method='get'>
-					搜尋<input type='text' name='關鍵字' >
-				</form>
-			</div>
-		</div>
-		
-		
-
-			
-		</div>
-		<div class='col custom-table-width'style='  '>";
 	
 		if(!isset($_SESSION['account'])) //若不存在此變數，代表沒登入
 		{
-			echo"you are not login";
+			echo"<div class = 'row'>
+			     <div class = 'col-auto'>
+				 you are not login
+				 </div>
+				 <div class='col-auto'>
+				 <a class='btn btn-primary' href='login.php' >登入</a>
+				 </div>
+				</div>";
+			$_SESSION['table'] = 'meeting_info';
 		}
 		else if($_SESSION['account'] != null) 
 		{
