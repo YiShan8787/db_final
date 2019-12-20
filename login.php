@@ -44,7 +44,7 @@ if ($account && $passowrd)
             if($key == "account")
             {
                 if($value ==$account)
-                    echo "帳號正確";
+                    echo "帳號正確<br>";
                 else
                 {
                     echo "帳號錯誤";
@@ -59,7 +59,7 @@ if ($account && $passowrd)
             if($key == "password")
             {
                 if($value ==$passowrd)
-                    echo "密碼正確";
+                    echo "密碼正確<br>";
                 else
                 {
                     echo "密碼錯誤";
@@ -74,8 +74,14 @@ if ($account && $passowrd)
         }
         //成功就跳轉
         $_SESSION['account'] = $account;
-        //header("location:meeting_info.php/?error=登入成功");
-        echo '<meta http-equiv=REFRESH CONTENT=5;url=index.php>';
+        //is_online =1
+        $query = "UPDATE admin SET is_online=1 where account = $account";
+		$stmt=$db->prepare($query);
+		$stmt->execute();
+		$result=$stmt->fetchALL();
+
+        echo "返回主頁中......";
+        echo '<meta http-equiv=REFRESH CONTENT=2;url=index.php>';
     }
 }
 else

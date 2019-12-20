@@ -29,7 +29,21 @@
 					<input type="submit" name="學生資訊" value="學生資訊">
 				</form>
 			</div>
+			
 			<?php
+			include_once "db_conn.php";
+			echo'<div class="col-auto">';
+				echo "<p>目前登入人數:";
+					$query = "select count(*) from admin where is_online=1";
+					$stmt=$db->prepare($query);
+					$stmt->execute();
+					$result=$stmt->fetchALL(PDO::FETCH_COLUMN, 0);
+					echo "$result[0]";
+					//print_r($result);
+					//echo "$result[0][count(*)][0]";
+				echo "</p>
+				</div>";
+			
 			if(!isset($_SESSION['account'])) //若不存在此變數，代表沒登入 
 			{
 				echo'
@@ -57,6 +71,7 @@
 					<a class="btn btn-primary" href="logout.php" >登出</a>
 				</div>';
 			}
+			
 			?>
 			
 		</div>
