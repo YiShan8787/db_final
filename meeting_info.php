@@ -33,14 +33,21 @@
 			<div class="col-auto">
 				<form action="" method="get">
 					<?php
-					if($_GET["keywords"]!="")
+					if(isset($_GET['keywords']))
 					{
-						echo"<input type='text' name='keywords' value='".$_GET["keywords"]."' >";
+						if($_GET["keywords"]!="")
+						{
+							echo"<input type='text' name='keywords' value='".$_GET["keywords"]."' >";
+						}
+						else
+						{
+							echo"<input type='text' name='keywords' value='' >";
+						}
 					}
 					else
-					{
-						echo"<input type='text' name='keywords' value='' >";
-					}
+						{
+							echo"<input type='text' name='keywords' value='' >";
+						}
 					?>
 					
 					<input type="submit" name="searchButton" value="search">
