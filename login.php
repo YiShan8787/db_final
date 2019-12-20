@@ -75,13 +75,22 @@ if ($account && $passowrd)
         //成功就跳轉
         $_SESSION['account'] = $account;
         //is_online =1
-        $query = "UPDATE admin SET is_online=1 where account = $account";
+        $query = "UPDATE admin SET is_online= 1 where account = $account";
 		$stmt=$db->prepare($query);
 		$stmt->execute();
-		$result=$stmt->fetchALL();
-
-        echo "返回主頁中......";
+        $result=$stmt->fetchALL();
+        
+        echo "返回主頁中.....";
         echo '<meta http-equiv=REFRESH CONTENT=2;url=index.php>';
+        if($_SESSION['table'] == 'meeting_info')
+        {
+            echo '<meta http-equiv=REFRESH CONTENT=5;url=meeting_info.php>';
+        }
+        else
+        {
+            //header("location:meeting_info.php/?error=登入成功");
+            echo '<meta http-equiv=REFRESH CONTENT=5;url=index.php>';
+        }        
     }
 }
 else
