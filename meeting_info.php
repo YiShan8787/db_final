@@ -15,22 +15,22 @@
 <body>
 	<div class="container">	
   		<div class="row justify-content-start">
-            <div class="col-auto ">
+            <div class="col-auto" style="margin: 5px">
 			    <form action="meeting_info.php" method="get">
 					<input class = "btn btn-primary" type="submit" name="開會資訊" value="開會資訊">
 				</form>
 			</div>
-			<div class="col-auto">
+			<div class="col-auto" style="margin: 5px">
 				<form action="teacher.php" method="get">
 					<input class = "btn btn-primary" type="submit" name="老師資訊" value="老師資訊">
 				</form>
 			</div>
-			<div class="col-auto">
+			<div class="col-auto" style="margin: 5px">
 				<form action="student.php" method="get">
 					<input class = "btn btn-primary" type="submit" name="學生資訊" value="學生資訊">
 				</form>
 			</div>
-			<div class="col-auto">
+			<div class="col-auto mr-auto" style="margin: 5px">
 				<form action="" method="get">
 					<?php
 					if(isset($_GET['keywords']))
@@ -56,56 +56,57 @@
 			<?php
 			if(isset($_SESSION['account']))
 			{
-				echo '<div class = "col-auto">
+				echo '<div class = "col-auto" style="margin: 5px">
 					 <a class="btn btn-primary" href="logout.php" >登出</a>
 					 </div>';
 			}
+			if(!isset($_SESSION['account'])) //若不存在此變數，代表沒登入
+			{
+				echo"<div class = 'row align-items-end'>
+					<div class = 'col-auto text-center' style='margin: 5px'>
+					you are not login
+					</div>
+					<div class='col-auto' style='margin: 5px'>
+					<a class='btn btn-primary' href='login.php' >登入</a>
+					</div>
+					</div>";
+				$_SESSION['table'] = 'meeting_info';
+			}
+			else if($_SESSION['account'] != null) 
+			{
+				echo"
+				<div class='row'>
+					<div class='button_meeting_edit'style='width:80%;margin-left:10.85%'>
+						
+							<form  action='meeting_edit.php' method='get'>
+								<input class='btn btn-outline-secondary' type='submit' name='edit' value='edit'>
+							</form>
+						
+					</div>
+				</div>";
+			}
 			?>
 		</div>			
-	</div>
-	<div class="col custom-table-width"style="  ">
-</body>
-</html>
+	
+		<div class="row custom-table-width"style="  ">
+	
 <?php
     include_once "db_conn.php";
 
 	
-		if(!isset($_SESSION['account'])) //若不存在此變數，代表沒登入
-		{
-			echo"<div class = 'row'>
-			     <div class = 'col-auto'>
-				 you are not login
-				 </div>
-				 <div class='col-auto'>
-				 <a class='btn btn-primary' href='login.php' >登入</a>
-				 </div>
-				</div>";
-			$_SESSION['table'] = 'meeting_info';
-		}
-		else if($_SESSION['account'] != null) 
-		{
-			echo"
-			<div class='row'>
-				<div class='button_meeting_edit'style='width:80%;margin-left:10.85%'>
-					
-						<form  action='meeting_edit.php' method='get'>
-							<input class='btn btn-outline-secondary' type='submit' name='edit' value='edit'>
-						</form>
-					
-				</div>
-			</div>";
-		}
+		
 		
 				
 		echo"
-			<table class='table table-striped 'style='width:80%;margin-left:10%  '>
+			<table class='table table-striped 'style='display: inline-block;  overflow:scroll; '>
 				
 		    	<thead>
 			    	<tr>
-				      	<th scope='col'>Date</th>
-				      	<th scope='col'>Time</th>
-				      	<th scope='col'>Discription</th>
-				      	<th scope='col'>Duration</th>
+				      	<th scope='col' style='width: 20vw'>Date</th>
+				      	<th scope='col' style='width: 20vw'>Time</th>
+				      	<th scope='col' style='width: 20vw'>Discription</th>
+						<th scope='col' style='width: 20vw'>Duration</th>
+						<th scope='col' style='width: 20vw'>Announcer</th>  
 			    	</tr>
 		  		</thead>
 		";
@@ -126,7 +127,8 @@
 					      	echo"<th scope='row'>".$this_row['m_date']."</th>";
 					      	echo"<td >".$this_row['time']."</td>";
 					      	echo"<td >".$this_row['description']."</td>";
-					      	echo"<td >".$this_row['duration']."</td>";
+							echo"<td >".$this_row['duration']."</td>";
+							echo"<td >".$this_row['announcer']."</td>";  
 					    	echo"</tr>";				    	
 						
 				
@@ -153,7 +155,8 @@
 				      	echo"<th scope='row'>".$this_row['m_date']."</th>";
 				      	echo"<td >".$this_row['time']."</td>";
 				      	echo"<td >".$this_row['description']."</td>";
-				      	echo"<td >".$this_row['duration']."</td>";
+						echo"<td >".$this_row['duration']."</td>";
+						echo"<td >".$this_row['announcer']."</td>";
 				    	echo"</tr>";
 				    }
 				}
@@ -166,3 +169,7 @@ echo"<script src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='s
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl' crossorigin='anonymous'></script>"
 
 ?>
+
+</div>
+</body>
+</html>

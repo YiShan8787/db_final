@@ -22,8 +22,8 @@ if (preg_match("/pm/i", $am_or_pm))
 $time=$hour.$minute.'00';
 echo "<script>console.log('Debug Objects: " . $date . "' );</script>";
 echo "<script>console.log('Debug Objects: " . $time . "' );</script>";
-   $query=("insert into meeting_info values(?,?,?,?)");
+   $query=("insert into meeting_info values(?,?,?,?,?)");
    $stmt=$db->prepare($query);
-   $stmt->execute(array($date,$time,$description,'2'));
+   $stmt->execute(array($date,$time,$description,'2','00557024'));
 header('Location:meeting_info.php')
 ?>
