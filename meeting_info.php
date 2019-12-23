@@ -17,17 +17,17 @@
   		<div class="row justify-content-start">
             <div class="col-auto" style="margin: 5px">
 			    <form action="meeting_info.php" method="get">
-					<input class = "btn btn-primary" type="submit" name="開會資訊" value="開會資訊">
+					<input class = "btn btn-outline-info btn-sm" type="submit" name="開會資訊" value="開會資訊">
 				</form>
 			</div>
 			<div class="col-auto" style="margin: 5px">
 				<form action="teacher.php" method="get">
-					<input class = "btn btn-primary" type="submit" name="老師資訊" value="老師資訊">
+					<input class = "btn btn-outline-info btn-sm" type="submit" name="老師資訊" value="老師資訊">
 				</form>
 			</div>
 			<div class="col-auto" style="margin: 5px">
 				<form action="student.php" method="get">
-					<input class = "btn btn-primary" type="submit" name="學生資訊" value="學生資訊">
+					<input class = "btn btn-outline-info btn-sm" type="submit" name="學生資訊" value="學生資訊">
 				</form>
 			</div>
 			<div class="col-auto mr-auto" style="margin: 5px">

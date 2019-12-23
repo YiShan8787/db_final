@@ -1,61 +1,106 @@
 <?php session_start(); ?>
-<?php
-	include_once "db_conn.php";
-
-	echo 
-	"
-	<head>
+<!doctype html>
+<html lang="zn">
+<head>
     <!-- Required meta tags -->
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
-<link rel='stylesheet' href='style.css'>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="style.css">
     <!-- Bootstrap CSS -->
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <title>meetingDB</title>
-	</head>
+</head>
 	
+<body>
+	<div class="container">	
+  		<div class="row justify-content-start">
+            <div class="col-auto" style="margin: 5px">
+			    <form action="meeting_info.php" method="get">
+					<input class = "btn btn-outline-info btn-sm" type="submit" name="開會資訊" value="開會資訊">
+				</form>
+			</div>
+			<div class="col-auto" style="margin: 5px">
+				<form action="teacher.php" method="get">
+					<input class = "btn btn-outline-info btn-sm" type="submit" name="老師資訊" value="老師資訊">
+				</form>
+			</div>
+			<div class="col-auto" style="margin: 5px">
+				<form action="student.php" method="get">
+					<input class = "btn btn-outline-info btn-sm" type="submit" name="學生資訊" value="學生資訊">
+				</form>
+			</div>
+			<div class="col-auto mr-auto" style="margin: 5px">
+				<form action="" method="get">
+					<?php
+					if(isset($_GET['keywords']))
+					{
+						if($_GET["keywords"]!="")
+						{
+							echo"<input type='text' name='keywords' value='".$_GET["keywords"]."' >";
+						}
+						else
+						{
+							echo"<input type='text' name='keywords' value='' >";
+						}
+					}
+					else
+						{
+							echo"<input type='text' name='keywords' value='' >";
+						}
+					?>
+					
+					<input type="submit" name="searchButton" value="search">
+				</form>
+			</div>
+			<?php
+			if(isset($_SESSION['account']) && $_SESSION['account'])
+			{
+				echo '<div class = "col-auto" style="margin: 5px">
+					 <a class="btn btn-primary" href="logout.php" >登出</a>
+					 </div>';
+			}
+			if(!isset($_SESSION['account'])) //若不存在此變數，代表沒登入
+			{
+				echo"<div class = 'row align-items-end'>
+						<div class='col-auto' style='margin: 5px'>
+						<a class='btn btn-primary' href='login.php' >登入</a>
+						</div>
+					</div>";
+				$_SESSION['table'] = 'meeting_info';
+			}
+			else if($_SESSION['account'] == null ) 
+			{
+				echo"
+				<div class='row'>
+					<div class = 'row align-items-end'>
+						<div class='col-auto' style='margin: 5px'>
+						<a class='btn btn-primary' href='login.php' >登入</a>
+						</div>
+					</div>
+				</div>";
+			}
+			?>
+		</div>			
 	
-	<div class='container'>
-  		<div class='row '>
-		  	<div class='col-auto' style='margin: 5px'>
-				<form action='meeting_info.php' method='get'>
-					<input class = 'btn btn-primary' type='submit' name='開會資訊' value='開會資訊'>
-				</form>
-			</div>
-			<div class='col-auto' style='margin: 5px'>
-				<form action='teacher.php' method='get'>
-					<input class = 'btn btn-primary' type='submit' name='老師資訊' value='老師資訊'>
-				</form>
-			</div>
-			<div class='col-auto' style='margin: 5px'>
-				<form action='student.php' method='get'>
-					<input class = 'btn btn-primary' type='submit' name='學生資訊' value='學生資訊'>
-				</form>
-			</div>
-			<div class='col-auto mr-auto' style='margin: 5px'>
-				<form action='inform.php' method='get'>
-					搜尋<input type='text' name='關鍵字' >
-				</form>
-			</div>
-		
-		</div>
+		<div class="row custom-table-width"style="  ">
 
-		<br><br>
-
-			
-		</div>
-
-		<div class='col custom-table-width'style='  '>";
+	<?php
+	include_once "db_conn.php";			
 		if(!isset($_SESSION['account'])) //若不存在此變數，代表沒登入
 		{
-			echo"you are not login";
+			echo"<div class = 'row align-items-end'>
+					<div class = 'col-auto text-center' style='margin: 5px'>
+					you are not login
+					</div>
+				</div>";
+			$_SESSION['table'] = 'student';
 		}
 		else if($_SESSION['account'] != null) 
 		{
 			echo"
 			<div class='row'>
-				<div class='button_meeting_edit'style='width:80%;margin-left:10.85%'>
+				<div class='col button_student_edit'style='width:80%;margin-left:10.85%'>
 					
 						<form  action='student_edit.php' method='get'>
 							<input class='btn btn-outline-secondary' type='submit' name='edit' value='edit'>
@@ -64,16 +109,16 @@
 				</div>
 			</div>";
 		}
-		
+
 		
 		echo"
 		
-			<table class='table table-striped 'style='width:80%;margin-left:10%  '>
+		<table class='table table-striped 'style='display: inline-block;  overflow:scroll; '>
 		    	<thead>
 			    	<tr>
-				      	<th scope='col'>Name</th>
-				      	<th scope='col'>School</th>
-				      	<th scope='col'>Field</th>
+				      	<th scope='col' style='width: 33.3vw'>Name</th>
+				      	<th scope='col' style='width: 33.3vw'>School</th>
+				      	<th scope='col' style='width: 33.3vw'>Field</th>
 				      	
 			    	</tr>
 		  		</thead>
@@ -111,6 +156,8 @@
 	echo"</tbody>";
 		echo"</table>";
     echo "</div>";
-echo "</div>";
+echo "</div>
+</div>
+</body>";
 
 ?>
