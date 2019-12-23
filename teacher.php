@@ -113,12 +113,12 @@
 		
 		echo"
 		
-		<table class='table table-striped 'style='display: inline-block;  overflow:scroll; '>
+		<table class='table table-striped overflow-auto'>
 		    	<thead>
 			    	<tr>
-				      	<th scope='col' style='width: 33.3vw'>Name</th>
-				      	<th scope='col' style='width: 33.3vw'>School</th>
-				      	<th scope='col' style='width: 33.3vw'>Field</th>
+				      	<th scope='col'>Name</th>
+				      	<th scope='col'>School</th>
+				      	<th scope='col'>Field</th>
 				      	
 			    	</tr>
 		  		</thead>

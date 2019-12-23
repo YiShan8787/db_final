@@ -114,15 +114,15 @@
 		
 				
 		echo"
-			<table class='table table-striped 'style='display: inline-block;  overflow:scroll; '>
+			<table class='table table-striped overflow-auto'>
 				
 		    	<thead>
 			    	<tr>
-				      	<th scope='col' style='width: 20vw'>Date</th>
-				      	<th scope='col' style='width: 20vw'>Time</th>
-				      	<th scope='col' style='width: 20vw'>Discription</th>
-						<th scope='col' style='width: 20vw'>Duration</th>
-						<th scope='col' style='width: 20vw'>Announcer</th>  
+				      	<th scope='col'>Date</th>
+				      	<th scope='col'>Time</th>
+				      	<th scope='col'>Discription</th>
+						<th scope='col' >Duration</th>
+						<th scope='col'>Announcer</th>  
 			    	</tr>
 		  		</thead>
 		";
