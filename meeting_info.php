@@ -54,7 +54,7 @@
 				</form>
 			</div>
 			<?php
-			if(isset($_SESSION['account']))
+			if(isset($_SESSION['account']) && $_SESSION['account'])
 			{
 				echo '<div class = "col-auto" style="margin: 5px">
 					 <a class="btn btn-primary" href="logout.php" >登出</a>
@@ -63,25 +63,20 @@
 			if(!isset($_SESSION['account'])) //若不存在此變數，代表沒登入
 			{
 				echo"<div class = 'row align-items-end'>
-					<div class = 'col-auto text-center' style='margin: 5px'>
-					you are not login
-					</div>
-					<div class='col-auto' style='margin: 5px'>
-					<a class='btn btn-primary' href='login.php' >登入</a>
-					</div>
+						<div class='col-auto' style='margin: 5px'>
+						<a class='btn btn-primary' href='login.php' >登入</a>
+						</div>
 					</div>";
 				$_SESSION['table'] = 'meeting_info';
 			}
-			else if($_SESSION['account'] != null) 
+			else if($_SESSION['account'] == null ) 
 			{
 				echo"
 				<div class='row'>
-					<div class='button_meeting_edit'style='width:80%;margin-left:10.85%'>
-						
-							<form  action='meeting_edit.php' method='get'>
-								<input class='btn btn-outline-secondary' type='submit' name='edit' value='edit'>
-							</form>
-						
+					<div class = 'row align-items-end'>
+						<div class='col-auto' style='margin: 5px'>
+						<a class='btn btn-primary' href='login.php' >登入</a>
+						</div>
 					</div>
 				</div>";
 			}
@@ -94,7 +89,28 @@
     include_once "db_conn.php";
 
 	
-		
+	if(!isset($_SESSION['account'])) //若不存在此變數，代表沒登入
+	{
+		echo"<div class = 'row align-items-end'>
+				<div class = 'col-auto text-center' style='margin: 5px'>
+				you are not login
+				</div>
+			</div>";
+		$_SESSION['table'] = 'meeting_info';
+	}
+	else if($_SESSION['account'] != null) 
+	{
+		echo"
+		<div class='row'>
+			<div class='col button_meeting_edit'style='width:80%;margin-left:10.85%'>
+				
+					<form  action='meeting_edit.php' method='get'>
+						<input class='btn btn-outline-secondary' type='submit' name='edit' value='edit'>
+					</form>
+				
+			</div>
+		</div>";
+	}
 		
 				
 		echo"
