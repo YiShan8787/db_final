@@ -34,7 +34,7 @@
 			include_once "db_conn.php";
 			echo'<div class="col-auto">';
 				echo "<p>目前登入人數:";
-					$query = "select count(*) from admin where is_online=1";
+					$query = "select count(*) from student where is_online=1";
 					$stmt=$db->prepare($query);
 					$stmt->execute();
 					$result=$stmt->fetchALL(PDO::FETCH_COLUMN, 0);
