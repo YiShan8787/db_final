@@ -82,16 +82,17 @@
 						  <button type="button" class="btn btn-primary dropdown-toggle btn-sm m-0 " id="dropsearch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
 						    選擇資訊
 						  </button>
-						  <div class="dropdown-menu">	
-							<a href="javascript:func1(0);" class="dropdown-item" type="get" name="searchfor" value="meetingInfo" >開會資訊<input type="hidden" name="searchfor" value="meetingInfo"></a>
-							<a href="javascript:func1(1);" class="dropdown-item" type="get" name="searchfor" value="teacherInfo" >老師資訊<input type="hidden" name="searchfor" value="teacherInfo"></a>			
-							<a href="javascript:func1(2);" class="dropdown-item" type="get" name="searchfor" value="studentInfo" >學生資訊<input type="hidden" name="searchfor" value="studentInfo"></a>				
+						  <div class="dropdown-menu">
+						    <a href="javascript:func1(0);" class="dropdown-item" type="get" name="searchfor" value="All" >全部資訊</a>	
+							<a href="javascript:func1(1);" class="dropdown-item" type="get" name="searchfor" value="meetingInfo" >開會資訊</a>
+							<a href="javascript:func1(2);" class="dropdown-item" type="get" name="searchfor" value="teacherInfo" >老師資訊</a>			
+							<a href="javascript:func1(3);" class="dropdown-item" type="get" name="searchfor" value="studentInfo" >學生資訊</a>				
 						  </div>
 					</div>
 				</div>
 				
 				<div class="col-auto " style="margin-left: -20px;display:inline-block;">
-					
+					    <input type="hidden" name="searchfor" id="searchfor" value="">
 						<input type="text" name="keywords" >
 						<input type="submit" name="searchButton" value="search">
 					
@@ -104,6 +105,7 @@
 				{	
 					echo "<script>console.log('searchButton is clicked' );</script>";
 					$searchfor=$_GET["searchfor"];
+					echo "<script>console.log('".$searchfor."');</script>";
 					$searchvalue=$_GET["keywords"];
 					//echo "<script>console.log('$searchfor:".$searchfor."' );</script>";
 					//echo "<script>console.log('$searchfor:".$searchvalue."' );</script>";
@@ -111,18 +113,32 @@
 						<table class='table table-striped '>
 			    		<thead>
 				    	<tr>";
-					if($searchfor=='meetingInfo')
+					if($searchfor=='All')
 					{
 						echo "<script>console.log('0' );</script>";
-						$query=("select * from meeting_info where m_date Like '%".$searchvalue."%' OR time Like '%".$searchvalue."%' OR description Like '%".$searchvalue."%' OR duration Like '%".$searchvalue."%'");
+						$query=("select * from meeting_info NATURAL JOIN student where m_date Like '%".$searchvalue."%' OR time Like '%".$searchvalue."%' OR description Like '%".$searchvalue."%' OR duration Like '%".$searchvalue."%' OR ID Like '%".$searchvalue."%' OR name Like '%".$searchvalue."%' OR school Like '%".$searchvalue."%' OR field Like '%".$searchvalue."%'");
 				      	echo"<th scope='col'>Date</th>";
 				      	echo"<th scope='col'>Time</th>";
-				      	echo"<th scope='col'>Discription</th>";
+				      	echo"<th scope='col'>Description</th>";
 				      	echo"<th scope='col'>Duration</th>";
+				      	echo"<th scope='col'>Announcer ID</th>";
+				      	echo"<th scope='col'>Announcer name</th>";
+				      	echo"<th scope='col'>Announcer school</th>";
+				      	echo"<th scope='col'>Announcer field</th>";
+					}
+					else if($searchfor=='meetingInfo')
+					{
+						echo "<script>console.log('1' );</script>";
+						$query=("select * from meeting_info where m_date Like '%".$searchvalue."%' OR time Like '%".$searchvalue."%' OR description Like '%".$searchvalue."%' OR duration Like '%".$searchvalue."%' OR ID Like '%".$searchvalue."%'");
+				      	echo"<th scope='col'>Date</th>";
+				      	echo"<th scope='col'>Time</th>";
+				      	echo"<th scope='col'>Description</th>";
+				      	echo"<th scope='col'>Duration</th>";
+				      	echo"<th scope='col'>Announcer ID</th>";
 					}
 					else if($searchfor=='teacherInfo')
 					{
-						echo "<script>console.log('1' );</script>";
+						echo "<script>console.log('2' );</script>";
 						$query=("select * from teacher where name Like '%".$searchvalue."%' OR ID Like '%".$searchvalue."%' OR school Like '%".$searchvalue."%' OR field Like '%".$searchvalue."%'");
 						echo"<th scope='col'>ID</th>";
 				      	echo"<th scope='col'>Name</th>";
@@ -131,7 +147,7 @@
 					}
 					else if($searchfor=='studentInfo')
 					{
-						echo "<script>console.log('2' );</script>";
+						echo "<script>console.log('3' );</script>";
 						$query=("select * from student where name Like '%".$searchvalue."%' OR ID Like '%".$searchvalue."%' OR school Like '%".$searchvalue."%' OR field Like '%".$searchvalue."%'");
 						echo"<th scope='col'>ID</th>";
 				      	echo"<th scope='col'>Name</th>";
@@ -152,9 +168,23 @@
 							echo"<tr>";
 					      	echo"<th scope='row'>".$this_row['m_date']."</th>";
 					      	echo"<td >".$this_row['time']."</td>";
-					      	echo"<td >".$this_row['discription']."</td>";
+					      	echo"<td >".$this_row['description']."</td>";
 					      	echo"<td >".$this_row['duration']."</td>";
+					      	echo"<td >".$this_row['ID']."</td>";
 					    	echo"</tr>";				    	
+						}
+						else if($searchfor=='All')
+						{
+							echo "<tr>";
+							echo "<th scope = 'row'>".$this_row['m_date']."</th>";
+							echo "<td >".$this_row['time']."</td>";
+							echo "<td >".$this_row['description']."</td>";
+							echo "<td >".$this_row['duration']."</td>";
+							echo "<td >".$this_row['ID']."</td>";
+							echo "<td >".$this_row['name']."</td>";
+							echo "<td >".$this_row['school']."</td>";
+							echo "<td >".$this_row['field']."</td>";
+					    	echo"</tr>";
 						}
 						else if($searchfor=='teacherInfo')
 						{	
@@ -188,8 +218,9 @@
 				    	<tr>
 					      	<th scope='col'>Date</th>
 					      	<th scope='col'>Time</th>
-					      	<th scope='col'>Discription</th>
+					      	<th scope='col'>Description</th>
 					      	<th scope='col'>Duration</th>
+					      	<th scope='col'>Announcer</th>
 				    	</tr>
 			  		</thead>";
 		  			$query = ("select * from meeting_info");
@@ -213,6 +244,7 @@
 				      	echo"<td >".$this_row['time']."</td>";
 				      	echo"<td >".$this_row['description']."</td>";
 				      	echo"<td >".$this_row['duration']."</td>";
+				      	echo "<td >".$this_row['announcer']."</td>";
 				    	echo"</tr>";
 				    }
 				    echo"</tbody>";
@@ -233,9 +265,10 @@
 			console.log(searchfor);
 			switch(searchfor)
 			{
-				case 0:$("#dropsearch").html('開會資訊');break;
-				case 1:$("#dropsearch").html('老師資訊');break;
-				case 2:$("#dropsearch").html('學生資訊');break;
+				case 0:$("#dropsearch").html('全部資訊');$("#searchfor").val('All');break;
+				case 1:$("#dropsearch").html('開會資訊');$("#searchfor").val('meetingInfo');break;
+				case 2:$("#dropsearch").html('老師資訊');$("#searchfor").val('teacherInfo');break;
+				case 3:$("#dropsearch").html('學生資訊');$("#searchfor").val('studentInfo');break;
 			}
 			
 		}
