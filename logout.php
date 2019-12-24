@@ -6,7 +6,7 @@ include_once "db_conn.php";
 
 $account = $_SESSION['account'];
 unset($_SESSION['account']);
-$query = ("UPDATE admin SET is_online = 0 WHERE account = $account");
+$query = ("UPDATE student SET is_online = 0 WHERE ID = $account");
 $stmt = $db -> prepare($query);
 $stmt->execute();
 echo $account;

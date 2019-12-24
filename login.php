@@ -32,7 +32,7 @@ $account = $_POST['account'];//post獲得使用者名稱錶單值
 $passowrd = $_POST['password'];//post獲得使用者密碼單值
 if ($account && $passowrd)
 {//如果使用者名稱和密碼都不為空
-    $query = "select * from admin where account = '$account' and password='$passowrd'";//檢測資料庫是否有對應的account和password的sql
+    $query = "select * from student where ID = '$account' and password='$passowrd'";//檢測資料庫是否有對應的account和password的sql
     $stmt=$db->prepare($query);
     $stmt->execute();
     $result=$stmt->fetchALL(PDO::FETCH_ASSOC); //PDO::FETCH_CLASS 返回一個物件，以欄位名稱設定屬性，並把設值給該屬性
@@ -75,7 +75,7 @@ if ($account && $passowrd)
         //成功就跳轉
         $_SESSION['account'] = $account;
         //is_online =1
-        $query = "UPDATE admin SET is_online= 1 where account = $account";
+        $query = "UPDATE student SET is_online= 1 where ID = $account";
 		$stmt=$db->prepare($query);
 		$stmt->execute();
         $result=$stmt->fetchALL();
