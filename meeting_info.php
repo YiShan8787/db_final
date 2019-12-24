@@ -131,7 +131,7 @@
 				{	
 					echo "<script>console.log('searchButton is clicked' );</script>";
 					$searchvalue=$_GET["keywords"];
-					$query=("select * from meeting_info where m_date Like '%".$searchvalue."%' OR time Like '%".$searchvalue."%' OR description Like '%".$searchvalue."%' OR duration Like '%".$searchvalue."%'");
+					$query=("select * from meeting_info where m_date Like '%".$searchvalue."%' OR time Like '%".$searchvalue."%' OR description Like '%".$searchvalue."%' OR duration Like '%".$searchvalue."%' OR announcer Like '%".$searchvalue."%'");
 					$stmt = $db->prepare($query);
 					$stmt -> execute();
 					$result = $stmt -> fetchAll();
