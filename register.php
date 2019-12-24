@@ -68,7 +68,7 @@
             {
                 echo '註冊成功';
                 $_SESSION['account'] = $account;
-                echo '<meta http-equiv=REFRESH CONTENT=5;url=index.php>';
+                echo '<meta http-equiv=REFRESH CONTENT=0;url=index.php>';
             }
             else
             {
