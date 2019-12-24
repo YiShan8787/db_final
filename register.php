@@ -22,6 +22,18 @@
                     </div>
                     <div class = "w-100"></div>
                     <div class = "col-md-auto">
+                        <input type=text name="name" placeholder = "姓名">
+                    </div>
+                    <div class = "w-100"></div>
+                    <div class = "col-md-auto">
+                        <input type=text name="school" placeholder = "學校">
+                    </div>
+                    <div class = "w-100"></div>
+                    <div class = "col-md-auto">
+                        <input type=text name="field" placeholder = "領域">
+                    </div>
+                    <div class = "w-100"></div>
+                    <div class = "col-md-auto">
                     <label>
                         <input type = checkbox name = "checkbox">我已詳閱<a href="">條款細則</a>
                     </label>
@@ -53,15 +65,18 @@
     $account = $_POST['account'];
     $password = $_POST['password'];
     $repassword = $_POST['repassword'];
+    $name = $_POST['name'];
+    $school = $_POST['school'];
+    $field = $_POST['field'];
     $checkbox = $_POST['checkbox'];
     //判斷帳號密碼是否為空
     //確認密碼輸入的正確性
     if($checkbox)
     {
-        if($account != null && $password != null && $repassword != null && $password == $repassword)
+        if($account != null && $password != null && $repassword != null&& $name != null&& $school != null && $field != null&& $password == $repassword)
         {
             //新增資料進資料庫
-            $query = ("insert into admin (account, password, is_online) values ('$account', '$password', 1)");
+            $query = ("insert into student (ID,name,school,field, password, is_online) values ('$account','$name','$school','$field', '$password', 1)");
             $stmt = $db->prepare($query);
             $result = $stmt -> execute();
             if($result)
