@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php
     include_once "db_conn.php";
 $times=$_POST["time"];
@@ -22,8 +23,9 @@ if (preg_match("/pm/i", $am_or_pm))
 $time=$hour.$minute.'00';
 echo "<script>console.log('Debug Objects: " . $date . "' );</script>";
 echo "<script>console.log('Debug Objects: " . $time . "' );</script>";
+echo "<script>console.log('Debug account: " . $_SESSION['account'] . "' );</script>";
    $query=("insert into meeting_info values(?,?,?,?,?)");
    $stmt=$db->prepare($query);
-   $stmt->execute(array($date,$time,$description,'2','00557024'));
+   $stmt->execute(array($date,$time,$description,'2',$_SESSION['account']));
 header('Location:meeting_info.php')
 ?>
