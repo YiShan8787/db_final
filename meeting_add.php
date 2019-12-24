@@ -67,6 +67,11 @@
 			    <textarea name='description' class='form-control' aria-label='With textarea'></textarea>
 
 			  </div>
+			  <div class='form-group'>
+			    <label for='description'>時間長度</label></br>
+			    <input type='text' name='duration' class='form-control col-sm-2' />
+
+			  </div>
 			  <button type='submit' class='btn btn-primary'>Submit</button>
 			</form>
 		</div>
