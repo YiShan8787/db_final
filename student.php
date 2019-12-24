@@ -84,80 +84,108 @@
 		</div>			
 	
 		<div class="row custom-table-width"style="  ">
+	
+<?php
+    include_once "db_conn.php";
 
-	<?php
-	include_once "db_conn.php";			
-		if(!isset($_SESSION['account'])) //若不存在此變數，代表沒登入
-		{
-			echo"<div class = 'row align-items-end'>
-					<div class = 'col-auto text-center' style='margin: 5px'>
-					you are not login
-					</div>
-				</div>";
-			$_SESSION['table'] = 'student';
-		}
-		else if($_SESSION['account'] != null) 
-		{
-			echo"
-			<div class='row'>
-				<div class='col button_student_edit'style='width:80%;margin-left:10.85%'>
-					
-						<form  action='student_edit.php' method='get'>
-							<input class='btn btn-outline-secondary' type='submit' name='edit' value='edit'>
-						</form>
-					
+	
+	if(!isset($_SESSION['account'])) //若不存在此變數，代表沒登入
+	{
+		echo"<div class = 'row align-items-end'>
+				<div class = 'col-auto text-center' style='margin: 5px'>
+				you are not login
 				</div>
 			</div>";
-		}
-
-		
+		$_SESSION['table'] = 'meeting_info';
+	}
+	else if($_SESSION['account'] != null) 
+	{
 		echo"
+		<div class='row'>
+			<div class='col button_student_edit'style='width:80%;margin-left:10.85%'>
+				
+					<form  action='student_edit.php' method='get'>
+						<input class='btn btn-outline-secondary' type='submit' name='edit' value='edit'>
+					</form>
+				
+			</div>
+		</div>";
+	}
 		
-		<table class='table table-striped overflow-auto'>
+				
+		echo"
+			<table class='table table-striped overflow-auto'>
+				
 		    	<thead>
 			    	<tr>
-				      	<th scope='col' >Name</th>
-				      	<th scope='col' >School</th>
-				      	<th scope='col' >Field</th>
-				      	
+				      	<th scope='col'>ID</th>
+				      	<th scope='col'>Name</th>
+				      	<th scope='col'>School</th>
+						<th scope='col' >Field</th>
+						 
 			    	</tr>
 		  		</thead>
+		";
 	
-		
-	
-	</div>
-	
-	<script src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous'></script>
-    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl' crossorigin='anonymous'></script>
-	
-	
-	";
-
-	$query = ("select * from student");
-	$stmt = $db->prepare($query);
-	$stmt -> execute();
-	$result = $stmt -> fetchAll();
-	foreach($result as $this_row)
-	{
-		/*echo "<div class = 'row align-items-center justify-content-center'>";
-		echo "<div class = 'col-2 text-center'>".$this_row['ID']."</div>";
-		echo "<div class = 'col-2 text-center'>".$this_row['name']."</div>";
-		echo "<div class = 'col-2 text-center'>".$this_row['school']."</div>";
-		echo "<div class = 'col-2 text-center'>".$this_row['field']."</div>";
-		echo "</div>";*/
-
-		echo"<tr>";
-      	echo"<th scope='row'>".$this_row['name']."</th>";
-      	echo"<td >".$this_row['school']."</td>";
-      	echo"<td >".$this_row['field']."</td>";
-    	echo"</tr>";
-	}
-	echo"</tbody>";
+		if(isset($_GET['searchButton']) && $_GET['searchButton'] == 'search')
+				{	
+					echo "<script>console.log('searchButton is clicked' );</script>";
+					$searchvalue=$_GET["keywords"];
+					$query=("select * from student where ID Like '%".$searchvalue."%' OR name Like '%".$searchvalue."%' OR school Like '%".$searchvalue."%' OR field Like '%".$searchvalue."%'");
+					$stmt = $db->prepare($query);
+					$stmt -> execute();
+					$result = $stmt -> fetchAll();
+					echo"<tbody>";
+					foreach($result as $this_row)
+					{
+							
+							echo"<tr>";
+					      	echo"<th scope='row'>".$this_row['ID']."</th>";
+					      	echo"<td >".$this_row['name']."</td>";
+					      	echo"<td >".$this_row['school']."</td>";
+							echo"<td >".$this_row['field']."</td>";
+							//echo"<td >".$this_row['announcer']."</td>";  
+					    	echo"</tr>";				    	
+						
+				
+					}
+			}
+			else{
+				    $query = ("select * from student");
+				    $stmt = $db->prepare($query);
+				    $stmt -> execute();
+				    $result = $stmt -> fetchAll();
+				    echo"<tbody >";
+				    foreach($result as $this_row)
+				    {
+				  	/*switch($this_row['importance'])//邱:不要刪
+				    	{
+				    		case 0:echo"<tr style='background-color:#ff8a8a'>";break;
+				    		case 1:echo"<tr style='background-color:#faf8b6'>";break;
+				    		case 2:echo"<tr style='background-color:#cbffbf'>";break;
+				    		case 3:echo"<tr style='background-color:#9eecff'>";break;
+				    		case 4:echo"<tr style='background-color:#9eecff'>";break;
+				    	}
+				    */
+				    	echo"<tr>";
+				      	echo"<th scope='row'>".$this_row['ID']."</th>";
+				      	echo"<td >".$this_row['name']."</td>";
+				      	echo"<td >".$this_row['school']."</td>";
+						echo"<td >".$this_row['field']."</td>";
+						//echo"<td >".$this_row['announcer']."</td>";
+				    	echo"</tr>";
+				    }
+				}
+    		echo"</tbody>";
 		echo"</table>";
     echo "</div>";
-echo "</div>
-</div>
-</body>";
+echo "</div>";
+echo"<script src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl' crossorigin='anonymous'></script>"
 
 ?>
+
+</div>
+</body>
+</html>

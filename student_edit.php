@@ -45,10 +45,10 @@
 		</div>
 		<div class='col custom-table-width'style='  '>
 			<div class='row'>
-				<div class='button_meeting_add'style='width:80%;margin-left:10.85%'>
+				<div class='button_student_add'style='width:80%;margin-left:10.85%'>
 					
-						<form  action='meeting_add.php' method='get'>
-							<input class='btn btn-outline-secondary' type='submit' name='add' value='add'>
+						<form  action='student_add.php' method='get'>
+							
 						</form>
 					
 				</div>
@@ -57,11 +57,10 @@
 				
 		    	<thead>
 			    	<tr>
-				      	<th scope='col'>Date</th>
-				      	<th scope='col'>Time</th>
-				      	<th scope='col'>Description</th>
-						<th scope='col'>Duration</th>
-
+				      	<th scope='col'>ID</th>
+				      	<th scope='col'>name</th>
+				      	<th scope='col'>school</th>
+						<th scope='col'>field</th>
 				      	<th scope='col'></th>
 			    	</tr>
 		  		</thead>
@@ -78,7 +77,7 @@
 	
     ";
     
-    $query = ("select * from meeting_info");
+    $query = ("select * from student");
     $stmt = $db->prepare($query);
     $stmt -> execute();
     $result = $stmt -> fetchAll();
@@ -106,26 +105,24 @@
     		case 4:echo"<tr style='background-color:#9eecff'>";break;
     	}
     */
-    	$d=$this_row['m_date'];
-    	$t=$this_row['time'];
-    	$d1=$this_row['description'];
-		$d2=$this_row['duration'];
-		//$d3=$this_row['announcer'];
+    	$d=$this_row['ID'];
+    	$t=$this_row['name'];
+    	$d1=$this_row['school'];
+		$d2=$this_row['field'];
     	echo"<tr>";
-    	echo"<td><form class='form-group' action='meeting_modify.php' method='get'>";
-      	echo"<td scope='row'><input class='form-control form-control-sm' type='text' name='m_m_date' value=".$d." ></td>";
+    	echo"<td><form class='form-group' action='student_modify.php' method='get'>";
+      	echo"<th scope='row'><input class='form-control form-control-sm' type='text' name='m_m_date' value=".$d." ></th>";
       	echo"<td ><input class='form-control form-control-sm' type='text' name='m_time' value=".$t." ></td>";
       	echo"<td ><textarea name='m_description2' class='form-control'   aria-label='With textarea' >".$d1."</textarea></td>";
 		echo"<td ><input class='form-control form-control-sm' type='text' name='m_duration' value=".$d2." ></td>";
-		//echo"<td ><input class='form-control form-control-sm' type='text' name='m_announcer' value=".$d3." ></td>";
-      	echo"<input type='hidden' name='m_date' value=".$this_row['m_date'].">";
-      	echo"<input type='hidden' name='time' value=".$this_row['time'].">";
+
+      	echo"<input type='hidden' name='ID' value=".$this_row['ID'].">";
       	echo"<td><input class='btn btn-outline-warning btn-sm ' type='submit' name='modify' value='修改'></td>";
       	echo"</td></form>";
-      	echo"<td ><form class='form-group ' action='meeting_delsave.php' method='get'>
+      	echo"<td ><form class='form-group ' action='student_delsave.php' method='get'>
 
-	      		<input type='hidden' name='m_date' value=".$this_row['m_date'].">
-	      		<input type='hidden' name='time' value=".$this_row['time'].">
+	      		<input type='hidden' name='ID' value=".$this_row['ID'].">
+	      		
 				<input class='btn btn-outline-danger btn-sm ' type='submit' name='X' value='刪除'>
 				</form></td>";
 		
