@@ -105,16 +105,16 @@
     		case 4:echo"<tr style='background-color:#9eecff'>";break;
     	}
     */
-    	$d=$this_row['ID'];
-    	$t=$this_row['name'];
-    	$d1=$this_row['school'];
-		$d2=$this_row['field'];
+    	$id_tmp=$this_row['ID'];
+    	$name_tmp=$this_row['name'];
+    	$school_tmp=$this_row['school'];
+		$field_tmp=$this_row['field'];
     	echo"<tr>";
     	echo"<td><form class='form-group' action='student_modify.php' method='get'>";
-      	echo"<th scope='row'><input class='form-control form-control-sm' type='text' name='m_m_date' value=".$d." ></th>";
-      	echo"<td ><input class='form-control form-control-sm' type='text' name='m_time' value=".$t." ></td>";
-      	echo"<td ><textarea name='m_description2' class='form-control'   aria-label='With textarea' >".$d1."</textarea></td>";
-		echo"<td ><input class='form-control form-control-sm' type='text' name='m_duration' value=".$d2." ></td>";
+      	echo"<th scope='row'><input class='form-control form-control-sm' type='text' name='m_ID' value=".$id_tmp." ></th>";
+      	echo"<td ><input class='form-control form-control-sm' type='text' name='m_name' value=".$name_tmp." ></td>";
+      	echo"<td ><textarea name='m_school' class='form-control'   aria-label='With textarea' >".$school_tmp."</textarea></td>";
+		echo"<td ><input class='form-control form-control-sm' type='text' name='m_field' value=".$field_tmp." ></td>";
 
       	echo"<input type='hidden' name='ID' value=".$this_row['ID'].">";
       	echo"<td><input class='btn btn-outline-warning btn-sm ' type='submit' name='modify' value='修改'></td>";
