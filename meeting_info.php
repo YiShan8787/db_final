@@ -129,7 +129,8 @@
 				      	<th scope='col'>Time</th>
 				      	<th scope='col'>Discription</th>
 						<th scope='col' >Duration</th>
-						<th scope='col'>Announcer</th>  
+						<th scope='col'>Announcer</th> 
+						<th scope='col'>Other</th> 
 			    	</tr>
 		  		</thead>
 		";
@@ -152,6 +153,11 @@
 					      	echo"<td >".$this_row['description']."</td>";
 							echo"<td >".$this_row['duration']."</td>";
 							echo"<td >".$this_row['announcer']."</td>";  
+							echo"<td ><form class='form-group ' action='teacher_delsave.php' method='get'>
+					      		<input type='hidden' name='time' value=".$this_row['time'].">
+					      		<input type='hidden' name='m_date' value=".$this_row['m_date'].">
+								<input class='btn btn-outline-danger btn-sm ' type='submit' name='more' value='更多'>
+								</form></td>";
 					    	echo"</tr>";				    	
 						
 				
@@ -165,39 +171,45 @@
 				    echo"<tbody >";
 				    foreach($result as $this_row)
 				    {
-			    	$query2=("select * from student where ID=".$this_row['announcer']."");
-					$stmt2 = $db->prepare($query2);
-					$stmt2 -> execute();
-					$result2 = $stmt2 -> fetchAll();
-					foreach($result2 as $this_row2)
-					{
-						if(isset($this_row2['status']) )	
-				  		{
-					  		switch($this_row2['status'])//邱:不要刪
-					    	{
-					    		case 0:echo"<tr style='background-color:#d4feff'>";break;
-					    		case 1:echo"<tr style='background-color:#d4feff'>";break;
-					    		case 2:echo"<tr style='background-color:#ffdccc'>";break;
-					    		case 3:echo"<tr style='background-color:#9eecff'>";break;
-					    		case 4:echo"<tr style='background-color:#9eecff'>";break;
-					    	}
-					    }
-					    else
-					    {
-					    	echo"<tr>";
-					    }
-					}
-				    
-				    
-				    	//echo"<tr>";
-				      	echo"<th scope='row'>".$this_row['m_date']."</th>";
-				      	echo"<td >".$this_row['time']."</td>";
-				      	echo"<td >".$this_row['description']."</td>";
-						echo"<td >".$this_row['duration']."</td>";
-						echo"<td >".$this_row['announcer']."</td>";
-				    	echo"</tr>";
+				    	$query2=("select * from student where ID=".$this_row['announcer']."");
+						$stmt2 = $db->prepare($query2);
+						$stmt2 -> execute();
+						$result2 = $stmt2 -> fetchAll();
+						foreach($result2 as $this_row2)
+						{
+							if(isset($this_row2['status']) )	
+					  		{
+						  		switch($this_row2['status'])//邱:不要刪
+						    	{
+						    		case 0:echo"<tr style='background-color:#d4feff'>";break;
+						    		case 1:echo"<tr style='background-color:#d4feff'>";break;
+						    		case 2:echo"<tr style='background-color:#ffdccc'>";break;
+						    		case 3:echo"<tr style='background-color:#9eecff'>";break;
+						    		case 4:echo"<tr style='background-color:#9eecff'>";break;
+						    	}
+						    }
+						    else
+						    {
+						    	echo"<tr>";
+						    }
+						}
+					    
+					    
+					    	//echo"<tr>";
+					      	echo"<th scope='row'>".$this_row['m_date']."</th>";
+					      	echo"<td >".$this_row['time']."</td>";
+					      	echo"<td >".$this_row['description']."</td>";
+							echo"<td >".$this_row['duration']."</td>";
+							echo"<td >".$this_row['announcer']."</td>";
+							echo"<td ><form class='form-group ' action='meeting_content.php' method='get'>
+					      		<input type='hidden' name='time' value=".$this_row['time'].">
+					      		<input type='hidden' name='m_date' value=".$this_row['m_date'].">
+								<input class='btn btn-outline-danger btn-sm ' type='submit' name='more' value='更多'>
+								</form></td>";
+					    	echo"</tr>";
 				    }
 				}
+				
     		echo"</tbody>";
 		echo"</table>";
     echo "</div>";
