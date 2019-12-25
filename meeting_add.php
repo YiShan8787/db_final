@@ -60,7 +60,7 @@
 			    data-language='en'
 			    data-timepicker='true' data-time-format='hh:ii aa'
 			    class='datepicker-here'
-		      />
+		      autocomplete='off'/>
 			
 			  <div class='form-group'>
 			    <label for='description'>描述</label></br>

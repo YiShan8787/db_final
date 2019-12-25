@@ -165,16 +165,31 @@
 				    echo"<tbody >";
 				    foreach($result as $this_row)
 				    {
-				  	/*switch($this_row['importance'])//邱:不要刪
-				    	{
-				    		case 0:echo"<tr style='background-color:#ff8a8a'>";break;
-				    		case 1:echo"<tr style='background-color:#faf8b6'>";break;
-				    		case 2:echo"<tr style='background-color:#cbffbf'>";break;
-				    		case 3:echo"<tr style='background-color:#9eecff'>";break;
-				    		case 4:echo"<tr style='background-color:#9eecff'>";break;
-				    	}
-				    */
-				    	echo"<tr>";
+			    	$query2=("select * from student where ID=".$this_row['announcer']."");
+					$stmt2 = $db->prepare($query2);
+					$stmt2 -> execute();
+					$result2 = $stmt2 -> fetchAll();
+					foreach($result2 as $this_row2)
+					{
+						if(isset($this_row2['status']) )	
+				  		{
+					  		switch($this_row2['status'])//邱:不要刪
+					    	{
+					    		case 0:echo"<tr style='background-color:#d4feff'>";break;
+					    		case 1:echo"<tr style='background-color:#d4feff'>";break;
+					    		case 2:echo"<tr style='background-color:#ffdccc'>";break;
+					    		case 3:echo"<tr style='background-color:#9eecff'>";break;
+					    		case 4:echo"<tr style='background-color:#9eecff'>";break;
+					    	}
+					    }
+					    else
+					    {
+					    	echo"<tr>";
+					    }
+					}
+				    
+				    
+				    	//echo"<tr>";
 				      	echo"<th scope='row'>".$this_row['m_date']."</th>";
 				      	echo"<td >".$this_row['time']."</td>";
 				      	echo"<td >".$this_row['description']."</td>";
