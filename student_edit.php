@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php
     include_once "db_conn.php";
 
@@ -62,6 +63,8 @@
 				      	<th scope='col'>school</th>
 						<th scope='col'>field</th>
 				      	<th scope='col'></th>
+				      	<th scope='col'></th>
+
 			    	</tr>
 		  		</thead>
 		
@@ -109,12 +112,27 @@
     	$name_tmp=$this_row['name'];
     	$school_tmp=$this_row['school'];
 		$field_tmp=$this_row['field'];
+
     	echo"<tr>";
-    	echo"<td><form class='form-group' action='student_modify.php' method='get'>";
-      	echo"<th scope='row'><input class='form-control form-control-sm' type='text' name='m_ID' value=".$id_tmp." ></th>";
-      	echo"<td ><input class='form-control form-control-sm' type='text' name='m_name' value=".$name_tmp." ></td>";
-      	echo"<td ><textarea name='m_school' class='form-control'   aria-label='With textarea' >".$school_tmp."</textarea></td>";
-		echo"<td ><input class='form-control form-control-sm' type='text' name='m_field' value=".$field_tmp." ></td>";
+    	echo"<form class='form-group' action='student_modify.php' method='get'>";
+    	if(isset($_SESSION['account']) && $_SESSION['account'])
+		{
+			if($_SESSION['account']==$this_row['ID'])
+			{
+				echo"<th scope='row'><input class='form-control form-control-sm' type='text' name='m_ID' value=".$id_tmp." ></th>";
+		      	echo"<td ><input class='form-control form-control-sm' type='text' name='m_name' value=".$name_tmp." ></td>";
+		      	echo"<td ><input class='form-control form-control-sm' type='text' name='m_school' value=".$school_tmp."></td>";
+				echo"<td ><input class='form-control form-control-sm' type='text' name='m_field' value=".$field_tmp." ></td>";
+			}
+			else
+			{
+				echo"<th scope='row'>".$id_tmp."</th>";
+		      	echo"<td >".$name_tmp."</td>";
+		      	echo"<td >".$school_tmp."</td>";
+				echo"<td >".$field_tmp."</td>";
+			}
+		}
+      	
 
       	echo"<input type='hidden' name='ID' value=".$this_row['ID'].">";
       	echo"<td><input class='btn btn-outline-warning btn-sm ' type='submit' name='modify' value='修改'></td>";
@@ -124,7 +142,7 @@
 	      		<input type='hidden' name='ID' value=".$this_row['ID'].">
 	      		
 				<input class='btn btn-outline-danger btn-sm ' type='submit' name='X' value='刪除'>
-				</form></td>";
+				</form>";
 		
       	//echo"<td ><button type='button' class=' btn btn-outline-danger btn-sm '>X</button></td>";
     	echo"</tr>";
