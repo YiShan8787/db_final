@@ -59,7 +59,10 @@ if ($account && $passowrd)
             if($key == "password")
             {
                 if($value ==$passowrd)
+                {
                     echo "密碼正確<br>";
+                    
+                }
                 else
                 {
                     echo "密碼錯誤";
@@ -70,6 +73,10 @@ if ($account && $passowrd)
                     ";//如果錯誤使用js 1秒後跳轉到登入頁面重試;
                     exit();
                 }
+            }
+            if($key == "status")
+            {
+                $_SESSION['status'] = $value;
             }
         }
         //成功就跳轉

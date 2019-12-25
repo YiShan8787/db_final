@@ -122,7 +122,7 @@
 				      	<th scope='col'>Name</th>
 				      	<th scope='col'>School</th>
 						<th scope='col' >Field</th>
-						 
+						 <th scope='col' >Status</th>
 			    	</tr>
 		  		</thead>
 		";
@@ -144,6 +144,12 @@
 					      	echo"<td >".$this_row['name']."</td>";
 					      	echo"<td >".$this_row['school']."</td>";
 							echo"<td >".$this_row['field']."</td>";
+							switch($this_row['status'])
+							{
+								case 0:echo"<td >學生</td>";break;
+								case 1:echo"<td >討論者</td>";break;
+								case 2:echo"<td >管理員</td>";break;
+							}
 							//echo"<td >".$this_row['announcer']."</td>";  
 					    	echo"</tr>";				    	
 						
@@ -172,6 +178,12 @@
 				      	echo"<td >".$this_row['name']."</td>";
 				      	echo"<td >".$this_row['school']."</td>";
 						echo"<td >".$this_row['field']."</td>";
+						switch($this_row['status'])
+							{
+								case 0:echo"<td >學生</td>";break;
+								case 1:echo"<td >討論者</td>";break;
+								case 2:echo"<td >管理員</td>";break;
+							}
 						//echo"<td >".$this_row['announcer']."</td>";
 				    	echo"</tr>";
 				    }

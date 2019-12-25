@@ -102,13 +102,20 @@
 	{
 		echo"
 		<div class='row'>
-			<div class='col button_meeting_edit'style='width:80%;margin-left:10.85%'>
-				
-					<form  action='meeting_edit.php' method='get'>
+			<div class='col button_meeting_edit'style='width:80%;margin-left:10.85%'>";
+		if(isset($_SESSION['status']) && $_SESSION['status']>0)	
+			{
+				echo"<form  action='meeting_edit.php' method='get'>
 						<input class='btn btn-outline-secondary' type='submit' name='edit' value='edit'>
-					</form>
-				
-			</div>
+					</form>";
+			}
+			else
+			{
+				echo"<form  action='meeting_edit.php' method='get'>
+						<input class='btn btn-outline-secondary' disabled type='submit' name='edit' value='edit'>
+					</form>";
+			}
+		echo"	</div>
 		</div>";
 	}
 		

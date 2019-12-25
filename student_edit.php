@@ -62,9 +62,11 @@
 				      	<th scope='col'>name</th>
 				      	<th scope='col'>school</th>
 						<th scope='col'>field</th>
+				      	<th scope='col'>status</th>
 				      	<th scope='col'></th>
 				      	<th scope='col'></th>
-
+				      	<th scope='col'></th>
+				      	<th scope='col'></th>
 			    	</tr>
 		  		</thead>
 		
@@ -85,6 +87,7 @@
     $stmt -> execute();
     $result = $stmt -> fetchAll();
     echo"<tbody >";
+    
     foreach($result as $this_row)
     {
     	//echo"<table class='table table-striped'>";
@@ -112,17 +115,29 @@
     	$name_tmp=$this_row['name'];
     	$school_tmp=$this_row['school'];
 		$field_tmp=$this_row['field'];
-
+		$status=$this_row['status'];
+		
     	echo"<tr>";
     	echo"<form class='form-group' action='student_modify.php' method='get'>";
     	if(isset($_SESSION['account']) && $_SESSION['account'])
 		{
-			if($_SESSION['account']==$this_row['ID'])
+			if(($_SESSION['account']==$this_row['ID']&&$_SESSION['status']!=2)||($_SESSION['status']==2&&$this_row['status']<2))//自己跟管理員可以修改資料
 			{
 				echo"<th scope='row'><input class='form-control form-control-sm' type='text' name='m_ID' value=".$id_tmp." ></th>";
 		      	echo"<td ><input class='form-control form-control-sm' type='text' name='m_name' value=".$name_tmp." ></td>";
 		      	echo"<td ><input class='form-control form-control-sm' type='text' name='m_school' value=".$school_tmp."></td>";
 				echo"<td ><input class='form-control form-control-sm' type='text' name='m_field' value=".$field_tmp." ></td>";
+				switch($this_row['status'])
+				{
+					case 0:echo"<td >學生</td>";break;
+					case 1:echo"<td >討論者</td>";break;
+					case 2:echo"<td >管理員</td>";break;
+				}
+				echo"<input type='hidden' name='ID' value=".$this_row['ID'].">";
+		      	echo"<td><input class='btn btn-outline-warning btn-sm ' type='submit' name='modify' value='修改'></td>";
+		      	//echo"</td>";
+		      	
+
 			}
 			else
 			{
@@ -130,19 +145,55 @@
 		      	echo"<td >".$name_tmp."</td>";
 		      	echo"<td >".$school_tmp."</td>";
 				echo"<td >".$field_tmp."</td>";
+				switch($this_row['status'])
+				{
+					case 0:echo"<td >學生</td>";break;
+					case 1:echo"<td >討論者</td>";break;
+					case 2:echo"<td >管理員</td>";break;
+				}
+				echo"<td></td>";
+				//echo"<td></td>";
 			}
+			echo"</form>";
+			if($_SESSION['status']==2&&$this_row['status']<2)
+		      	{
+		      		echo"<form class='form-group ' action='student_delsave.php' method='get'>";
+
+		      		echo"<input type='hidden' name='ID' value=".$this_row['ID'].">";
+		      		
+					echo"<td><input class='btn btn-outline-danger btn-sm ' type='submit' name='X' value='刪除'></td>";
+					echo"</form>";
+				}
+			else
+			{
+				echo"<td><input class='btn btn-outline-danger btn-sm ' disabled type='submit' name='X' value='刪除'></td>";
+			}
+			if($_SESSION['status']>0)
+				{
+					echo"<form class='form-group' action='student_modify.php' method='get'>";
+					echo"<input type='hidden' name='ID' value=".$this_row['ID'].">";
+					echo"<input type='hidden' name='status' value=".$this_row['status'].">";
+					if($_SESSION['status']>$this_row['status'])
+						{
+							echo"<td><input class='btn btn-outline-success btn-sm ' type='submit' name='up_status' value='升級'></td>";
+							if($this_row['status']>0)
+							{echo"<td><input class='btn btn-outline-dark btn-sm ' type='submit' name='down_status' value='降級'></td>";}
+							else
+							{echo"<td><input class='btn btn-outline-dark btn-sm ' disabled type='submit' name='down_status' value='降級'></td>";}
+						}
+					else
+						{
+							echo"<td><input class='btn btn-outline-success btn-sm ' disabled type='submit' name='up_status' value='升級'></td>";
+							echo"<td><input class='btn btn-outline-dark btn-sm ' disabled type='submit' name='down_status' value='降級'></td>";
+						}
+					echo"</form>";
+					
+				}
 		}
       	
 
-      	echo"<input type='hidden' name='ID' value=".$this_row['ID'].">";
-      	echo"<td><input class='btn btn-outline-warning btn-sm ' type='submit' name='modify' value='修改'></td>";
-      	echo"</td></form>";
-      	echo"<td ><form class='form-group ' action='student_delsave.php' method='get'>
-
-	      		<input type='hidden' name='ID' value=".$this_row['ID'].">
-	      		
-				<input class='btn btn-outline-danger btn-sm ' type='submit' name='X' value='刪除'>
-				</form>";
+      	
+				
 		
       	//echo"<td ><button type='button' class=' btn btn-outline-danger btn-sm '>X</button></td>";
     	echo"</tr>";
