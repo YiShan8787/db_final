@@ -19,7 +19,7 @@ width: 30vh;
 }
 .btn
 {
-margin: 5px 5px 5px;
+margin: 5px;
 }
 
 </style>
