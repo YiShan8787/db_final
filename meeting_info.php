@@ -12,6 +12,14 @@
     <title>meetingDB</title>
 </head>
 	
+<style>
+.table th
+{
+width: 25vh;
+}
+
+</style>
+
 <body>
 	<div class="container">	
   		<div class="row justify-content-start">

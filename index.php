@@ -11,6 +11,19 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>meetingDB</title>
   </head>
+
+  <style>
+.table th
+{
+width: 30vh;
+}
+.btn
+{
+margin: 5px 5px 5px;
+}
+
+</style>
+
   <body>
   	<div class="container">
   		<div class="row align-items-center justify-content-center">
@@ -79,7 +92,7 @@
 			<form action="" method="get" >
 				<div class="col-auto"style="display:inline-block;" style="margin: 5px">
 					<div class="btn-group">
-						  <button type="button" class="btn btn-primary dropdown-toggle btn-sm m-0 " id="dropsearch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+						  <button type="button" class="btn btn-primary dropdown-toggle btn-sm  " id="dropsearch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
 						    選擇資訊
 						  </button>
 						  <div class="dropdown-menu">
@@ -109,7 +122,7 @@
 					$searchvalue=$_GET["keywords"];
 					//echo "<script>console.log('$searchfor:".$searchfor."' );</script>";
 					//echo "<script>console.log('$searchfor:".$searchvalue."' );</script>";
-					echo"<div class='col-fix '' >
+					echo"<div class='col-fix ' >
 						<table class='table table-striped '>
 			    		<thead>
 				    	<tr>";
@@ -212,7 +225,7 @@
 			{
 				echo "<script>console.log('!!searchButton is NOT clicked' );</script>";
 				echo "</div>";
-				echo "<div class='row align-items-center justify-content-center'>";
+				
 				echo"
 				<table class='table table-striped table-responsive'>
 					
@@ -250,15 +263,14 @@
 				    	echo"</tr>";
 				    }
 				    echo"</tbody>";
-			    echo"</table>";
+				echo"</table>";
+				//echo "<div>";
 			}
 			?>
 			
 				
-			</div>
-			<br><br>
-		<div name="table">	
-	</div>
+			
+			
 
 	
 	<script>
