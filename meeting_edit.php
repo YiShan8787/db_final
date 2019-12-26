@@ -42,10 +42,10 @@
 		
 
 			
-		</div>
+		
 		<div class='col custom-table-width'style='  '>
 			<div class='row'>
-				<div class='button_meeting_add'style='width:80%;margin-left:10.85%'>
+				<div class='button_meeting_add'>
 					
 						<form  action='meeting_add.php' method='get'>
 							<input class='btn btn-outline-secondary' type='submit' name='add' value='add'>
@@ -53,7 +53,7 @@
 					
 				</div>
 			</div>
-			<table class='table table-striped table-responsive'style='width:80%;margin-left:10%  '>
+			<table class='table table-striped table-responsive'>
 				
 		    	<thead>
 			    	<tr>
@@ -111,8 +111,9 @@
     	$d1=$this_row['description'];
 		$d2=$this_row['duration'];
 		//$d3=$this_row['announcer'];
+		echo"<form class='form-group' action='meeting_modify.php' method='get'>";
     	echo"<tr>";
-    	echo"<td><form class='form-group' action='meeting_modify.php' method='get'>";
+    	//echo"<td><form class='form-group' action='meeting_modify.php' method='get'>";
       	echo"<td scope='row'><input class='form-control form-control-sm' type='text' name='m_m_date' value=".$d." ></td>";
       	echo"<td ><input class='form-control form-control-sm' type='text' name='m_time' value=".$t." ></td>";
       	echo"<td ><textarea name='m_description2' class='form-control'   aria-label='With textarea' >".$d1."</textarea></td>";
@@ -121,7 +122,8 @@
       	echo"<input type='hidden' name='m_date' value=".$this_row['m_date'].">";
       	echo"<input type='hidden' name='time' value=".$this_row['time'].">";
       	echo"<td><input class='btn btn-outline-warning btn-sm ' type='submit' name='modify' value='修改'></td>";
-      	echo"</td></form>";
+		//echo"</td></form>";
+		echo"</form>";  
       	echo"<td ><form class='form-group ' action='meeting_delsave.php' method='get'>
 
 	      		<input type='hidden' name='m_date' value=".$this_row['m_date'].">
@@ -140,7 +142,8 @@
     		echo"</tbody>";
 		echo"</table>";
     echo "</div>";
-echo "</div>";
+echo "</div>
+</div>";
 
 
 ?>

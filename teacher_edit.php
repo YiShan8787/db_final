@@ -42,10 +42,10 @@
 		
 
 			
-		</div>
+	
 		<div class='col custom-table-width'style='  '>
 			<div class='row'>
-				<div class='button_student_add'style='width:80%;margin-left:10.85%'>
+				<div class='button_student_add'>
 					
 						<form  action='student_add.php' method='get'>
 							
@@ -53,7 +53,7 @@
 					
 				</div>
 			</div>
-			<table class='table table-striped table-responsive'style='width:80%;margin-left:10%  '>
+			<table class='table table-striped table-responsive'>
 				
 		    	<thead>
 			    	<tr>
@@ -61,7 +61,7 @@
 				      	<th scope='col'>name</th>
 				      	<th scope='col'>school</th>
 						<th scope='col'>field</th>
-				      	<th scope='col'></th>
+				      	
 			    	</tr>
 		  		</thead>
 		
@@ -137,7 +137,8 @@
     		echo"</tbody>";
 		echo"</table>";
     echo "</div>";
-echo "</div>";
+echo "</div>
+</div>";
 
 
 ?>

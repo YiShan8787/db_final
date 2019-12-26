@@ -76,8 +76,8 @@
 			
 		</div>
 		<div class="row align-items-center justify-content-center" style="margin-top: 10px;">
-			<form action="" method="get" class="col-auto">
-				<div class="col-auto"style="display:inline-block;">
+			<form action="" method="get" >
+				<div class="col-auto"style="display:inline-block;" style="margin: 5px">
 					<div class="btn-group">
 						  <button type="button" class="btn btn-primary dropdown-toggle btn-sm m-0 " id="dropsearch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
 						    選擇資訊
@@ -129,7 +129,7 @@
 					else if($searchfor=='meetingInfo')
 					{
 						echo "<script>console.log('1' );</script>";
-						$query=("select * from meeting_info where m_date Like '%".$searchvalue."%' OR time Like '%".$searchvalue."%' OR description Like '%".$searchvalue."%' OR duration Like '%".$searchvalue."%' OR ID Like '%".$searchvalue."%'");
+						$query=("select * from meeting_info where m_date Like '%".$searchvalue."%' OR time Like '%".$searchvalue."%' OR description Like '%".$searchvalue."%' OR duration Like '%".$searchvalue."%' OR announcer Like '%".$searchvalue."%'");
 				      	echo"<th scope='col'>Date</th>";
 				      	echo"<th scope='col'>Time</th>";
 				      	echo"<th scope='col'>Description</th>";
@@ -211,8 +211,9 @@
 			else
 			{
 				echo "<script>console.log('!!searchButton is NOT clicked' );</script>";
-				echo"<div class='col-fix '' >
-				<table class='table table-striped '>
+				
+				echo"<div class='col-fix ' >
+				<table class='table table-striped table-responsive'>
 					
 			    	<thead>
 				    	<tr>

@@ -114,7 +114,7 @@
 		
 				
 		echo"
-			<table class='table table-striped overflow-auto'>
+			<table class='table table-striped table-responsive'>
 				
 		    	<thead>
 			    	<tr>

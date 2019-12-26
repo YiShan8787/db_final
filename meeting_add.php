@@ -48,32 +48,33 @@
 				</form>
 			</div>
 		</div>
-	</div>
-	<div class='container'>
-		<div class='col-auto '>
-			<form action='meeting_addsave.php' method='post'>
-				<label for='date'>時間</label></br>
-			  <input type='text'
-			  name='time'
-			    data-range='true'
-			    data-multiple-dates-separator=' - '
-			    data-language='en'
-			    data-timepicker='true' data-time-format='hh:ii aa'
-			    class='datepicker-here'
-		      autocomplete='off'/>
-			
-			  <div class='form-group'>
-			    <label for='description'>描述</label></br>
-			    <textarea name='description' class='form-control' aria-label='With textarea'></textarea>
+	
+		<div class='row'>
+			<div class='col'>
+				<form action='meeting_addsave.php' method='post'>
+					<label for='date'>時間</label></br>
+				<input type='text'
+				name='time'
+					data-range='true'
+					data-multiple-dates-separator=' - '
+					data-language='en'
+					data-timepicker='true' data-time-format='hh:ii aa'
+					class='datepicker-here'
+				autocomplete='off'/>
+				
+				<div class='form-group'>
+					<label for='description'>描述</label></br>
+					<textarea name='description' class='form-control' aria-label='With textarea'></textarea>
 
-			  </div>
-			  <div class='form-group'>
-			    <label for='description'>時間長度</label></br>
-			    <input type='text' name='duration' class='form-control col-sm-2' />
+				</div>
+				<div class='form-group'>
+					<label for='description'>時間長度</label></br>
+					<input type='text' name='duration' class='form-control col-sm-2' />
 
-			  </div>
-			  <button type='submit' class='btn btn-primary'>Submit</button>
-			</form>
+				</div>
+				<button type='submit' class='btn btn-primary'>Submit</button>
+				</form>
+			</div>
 		</div>
 	</div>
 	<script src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous'></script>
