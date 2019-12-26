@@ -211,8 +211,9 @@
 			else
 			{
 				echo "<script>console.log('!!searchButton is NOT clicked' );</script>";
-				
-				echo"<div class='col-fix ' >
+				echo "</div>";
+				echo "<div class='row align-items-center justify-content-center'>";
+				echo"
 				<table class='table table-striped table-responsive'>
 					
 			    	<thead>
