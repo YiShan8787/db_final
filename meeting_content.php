@@ -113,13 +113,13 @@ width: 25vh;
 			<div class='col button_meeting_edit'style='width:80%;margin-left:10.85%'>";
 		if(isset($_SESSION['status']) && $_SESSION['status']>0)	
 			{
-				echo"<form  action='meeting_edit.php' method='get'>
+				echo"<form  action='meeting__content_edit.php' method='get'>
 						<input class='btn btn-outline-secondary' type='submit' name='edit' value='edit'>
 					</form>";
 			}
 			else
 			{
-				echo"<form  action='meeting_edit.php' method='get'>
+				echo"<form  action='meeting_content_edit.php' method='get'>
 						<input class='btn btn-outline-secondary' disabled type='submit' name='edit' value='edit'>
 					</form>";
 			}
@@ -160,11 +160,7 @@ width: 25vh;
 					      	echo"<td >".$this_row['place']."</td>";
 							echo"<td >".$this_row['detail']."</td>";
 							echo"<td >".$this_row['host']."</td>";  
-							echo"<td ><form class='form-group ' action='teacher_delsave.php' method='get'>
-					      		<input type='hidden' name='time' value=".$this_row['time'].">
-					      		<input type='hidden' name='m_date' value=".$this_row['m_date'].">
-								<input class='btn btn-outline-danger btn-sm ' type='submit' name='more' value='更多'>
-								</form></td>";
+							
 					    	echo"</tr>";				    	
 						
 				

@@ -161,7 +161,7 @@ width: 25vh;
 					      	echo"<td >".$this_row['description']."</td>";
 							echo"<td >".$this_row['duration']."</td>";
 							echo"<td >".$this_row['announcer']."</td>";  
-							echo"<td ><form class='form-group ' action='teacher_delsave.php' method='get'>
+							echo"<td ><form class='form-group ' action='meeting_content.php' method='get'>
 					      		<input type='hidden' name='time' value=".$this_row['time'].">
 					      		<input type='hidden' name='m_date' value=".$this_row['m_date'].">
 								<input class='btn btn-outline-danger btn-sm ' type='submit' name='more' value='更多'>
