@@ -15,7 +15,7 @@
   <style>
 .table th
 {
-width: 30vh;
+width: 30vw;
 }
 .btn
 {
@@ -122,8 +122,8 @@ margin: 5px;
 					$searchvalue=$_GET["keywords"];
 					//echo "<script>console.log('$searchfor:".$searchfor."' );</script>";
 					//echo "<script>console.log('$searchfor:".$searchvalue."' );</script>";
-					echo"<div class='col-fix ' >
-						<table class='table table-striped '>
+					echo"
+						<table class='table table-striped table-responsive'>
 			    		<thead>
 				    	<tr>";
 					if($searchfor=='All')
