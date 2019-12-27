@@ -149,7 +149,8 @@
 							{
 								case 0:echo"<td >學生</td>";break;
 								case 1:echo"<td >討論者</td>";break;
-								case 2:echo"<td >管理員</td>";break;
+								case 2:echo"<td >老師</td>";break;
+								case 3:echo"<td >管理員</td>";break;
 							}
 							//echo"<td >".$this_row['announcer']."</td>";  
 					    	echo"</tr>";				    	
@@ -183,7 +184,8 @@
 							{
 								case 0:echo"<td >學生</td>";break;
 								case 1:echo"<td >討論者</td>";break;
-								case 2:echo"<td >管理員</td>";break;
+								case 2:echo"<td >老師</td>";break;
+								case 3:echo"<td >管理員</td>";break;
 							}
 						//echo"<td >".$this_row['announcer']."</td>";
 				    	echo"</tr>";
