@@ -113,7 +113,7 @@ width: 25vh;
 			<div class='col button_meeting_edit'style='width:80%;margin-left:10.85%'>";
 		if(isset($_SESSION['status']) && $_SESSION['status']>0)	
 			{
-				echo"<form  action='meeting__content_edit.php' method='get'>
+				echo"<form  action='meeting_content_edit.php' method='get'>
 						<input class='btn btn-outline-secondary' type='submit' name='edit' value='edit'>
 					</form>";
 			}

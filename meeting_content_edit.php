@@ -1,3 +1,11 @@
+<style>
+.table th
+{
+width: 30vw;
+}
+
+</style>
+
 <?php
     include_once "db_conn.php";
 
@@ -42,13 +50,13 @@
 		
 
 			
-	
+		
 		<div class='col custom-table-width'style='  '>
 			<div class='row'>
-				<div class='button_student_add'>
+				<div class='button_meeting_add'>
 					
-						<form  action='student_add.php' method='get'>
-							
+						<form  action='meeting_content_add.php' method='get'>
+							<input class='btn btn-outline-secondary' type='submit' name='add' value='add'>
 						</form>
 					
 				</div>
@@ -57,10 +65,11 @@
 				
 		    	<thead>
 			    	<tr>
-				      	<th scope='col'>ID</th>
-				      	<th scope='col'>name</th>
-				      	<th scope='col'>school</th>
-						<th scope='col'>field</th>
+				      	<th scope='col'>Date</th>
+				      	<th scope='col'>Time</th>
+				      	<th scope='col'>place</th>
+						<th scope='col'>Detail</th>
+
 				      	
 			    	</tr>
 		  		</thead>
@@ -77,7 +86,7 @@
 	
     ";
     
-    $query = ("select * from teacher");
+    $query = ("select * from meeting_content");
     $stmt = $db->prepare($query);
     $stmt -> execute();
     $result = $stmt -> fetchAll();
@@ -105,26 +114,28 @@
     		case 4:echo"<tr style='background-color:#9eecff'>";break;
     	}
     */
-    	$id_tmp=$this_row['ID'];
-    	$name_tmp=$this_row['name'];
-    	$school_tmp=$this_row['school'];
-		$field_tmp=$this_row['field'];
-		echo"<form class='form-group' action='teacher_modify.php' method='get'>";
+    	$d=$this_row['m_date'];
+    	$t=$this_row['time'];
+    	$d1=$this_row['place'];
+		$d2=$this_row['detail'];
+		//$d3=$this_row['announcer'];
+		echo"<form class='form-group' action='meeting_content_modify.php' method='get'>";
     	echo"<tr>";
-    	//echo"<td><form class='form-group' action='teacher_modify.php' method='get'>";
-      	echo"<th scope='row'><input class='form-control form-control-sm' type='text' name='m_ID' value=".$id_tmp." ></th>";
-      	echo"<td ><input class='form-control form-control-sm' type='text' name='m_name' value=".$name_tmp." ></td>";
-      	echo"<td ><textarea name='m_school' class='form-control'   aria-label='With textarea' >".$school_tmp."</textarea></td>";
-		echo"<td ><input class='form-control form-control-sm' type='text' name='m_field' value=".$field_tmp." ></td>";
-
-      	echo"<input type='hidden' name='ID' value=".$this_row['ID'].">";
+    	//echo"<td><form class='form-group' action='meeting_modify.php' method='get'>";
+      	echo"<td scope='row'><input class='form-control form-control-sm' type='text' name='m_m_date' value=".$d." ></td>";
+      	echo"<td ><input class='form-control form-control-sm' type='text' name='m_time' value=".$t." ></td>";
+        echo"<td ><input class='form-control form-control-sm' type='text' name='m_duration' value=".$d1." ></td>";
+        echo"<td ><textarea name='m_description2' class='form-control'   aria-label='With textarea' >".$d2."</textarea></td>";
+		//echo"<td ><input class='form-control form-control-sm' type='text' name='m_announcer' value=".$d3." ></td>";
+      	echo"<input type='hidden' name='m_date' value=".$this_row['m_date'].">";
+      	echo"<input type='hidden' name='time' value=".$this_row['time'].">";
       	echo"<td><input class='btn btn-outline-warning btn-sm ' type='submit' name='modify' value='修改'></td>";
 		//echo"</td></form>";
-		echo"</form>";
-      	echo"<td ><form class='form-group ' action='teacher_delsave.php' method='get'>
+		echo"</form>";  
+      	echo"<td ><form class='form-group ' action='meeting_content_delsave.php' method='get'>
 
-	      		<input type='hidden' name='ID' value=".$this_row['ID'].">
-	      		
+	      		<input type='hidden' name='m_date' value=".$this_row['m_date'].">
+	      		<input type='hidden' name='time' value=".$this_row['time'].">
 				<input class='btn btn-outline-danger btn-sm ' type='submit' name='X' value='刪除'>
 				</form></td>";
 		
