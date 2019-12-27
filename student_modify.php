@@ -45,7 +45,7 @@ if(isset($_GET['down_status']))
 	$field=$_GET["field"];
 	if($status==2)
 	{
-		$query=("DELETE FROM teacher WHERE ID='$ID' " );
+		$query=("DELETE FROM teacher WHERE ID='$old_ID' " );
 	    $stmt=$db->prepare($query);
 	    $stmt->execute();
 	    $result=$stmt->fetchAll();
