@@ -22,8 +22,16 @@ if(isset($_GET['modify']))
 if(isset($_GET['up_status']))
 {
 	$status=$_GET["status"];
-
+	$name=$_GET["name"];
+	$school=$_GET["school"];
+	$field=$_GET["field"];
 	$status++;
+	if($status==2)
+	{
+		$query=("insert into teacher values(?,?,?,?)");
+		$stmt=$db->prepare($query);
+		$stmt->execute(array($old_ID,$name,$school,$field));
+	}
 	$inputs = array($status,$old_ID);
 	$sql = "UPDATE student SET status=?  WHERE ID=? ";
 	$stmt=$db->prepare($sql);
@@ -32,7 +40,16 @@ if(isset($_GET['up_status']))
 if(isset($_GET['down_status']))
 {
 	$status=$_GET["status"];
-
+	$name=$_GET["name"];
+	$school=$_GET["school"];
+	$field=$_GET["field"];
+	if($status==2)
+	{
+		$query=("DELETE FROM teacher WHERE ID='$old_ID' " );
+	    $stmt=$db->prepare($query);
+	    $stmt->execute();
+	    $result=$stmt->fetchAll();
+	}
 	$status--;
 	$inputs = array($status,$old_ID);
 	$sql = "UPDATE student SET status=?  WHERE ID=? ";

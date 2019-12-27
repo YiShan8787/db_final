@@ -113,7 +113,7 @@
     	echo"<form class='form-group' action='student_modify.php' method='get'>";
     	if(isset($_SESSION['account']) && $_SESSION['account'])
 		{
-			if(($_SESSION['account']==$this_row['ID']&&$_SESSION['status']!=2)||($_SESSION['status']==2&&$this_row['status']<2))//自己跟管理員可以修改資料
+			if(($_SESSION['account']==$this_row['ID']&&$_SESSION['status']!=3)||($_SESSION['status']==3&&$this_row['status']<3))//自己跟管理員可以修改資料
 			{
 				echo"<th scope='row'><input class='form-control form-control-sm' type='text' name='m_ID' value=".$id_tmp." ></th>";
 		      	echo"<td ><input class='form-control form-control-sm' type='text' name='m_name' value=".$name_tmp." ></td>";
@@ -123,7 +123,8 @@
 				{
 					case 0:echo"<td >學生</td>";break;
 					case 1:echo"<td >討論者</td>";break;
-					case 2:echo"<td >管理員</td>";break;
+					case 2:echo"<td >老師</td>";break;
+					case 3:echo"<td >管理員</td>";break;
 				}
 				echo"<input type='hidden' name='ID' value=".$this_row['ID'].">";
 		      	echo"<td><input class='btn btn-outline-warning btn-sm ' type='submit' name='modify' value='修改'></td>";
@@ -141,13 +142,14 @@
 				{
 					case 0:echo"<td >學生</td>";break;
 					case 1:echo"<td >討論者</td>";break;
-					case 2:echo"<td >管理員</td>";break;
+					case 2:echo"<td >老師</td>";break;
+					case 3:echo"<td >管理員</td>";break;
 				}
 				echo"<td></td>";
 				//echo"<td></td>";
 			}
 			echo"</form>";
-			if($_SESSION['status']==2&&$this_row['status']<2)
+			if($_SESSION['status']==3&&$this_row['status']<3)
 		      	{
 		      		echo"<form class='form-group ' action='student_delsave.php' method='get'>";
 
@@ -164,6 +166,9 @@
 				{
 					echo"<form class='form-group' action='student_modify.php' method='get'>";
 					echo"<input type='hidden' name='ID' value=".$this_row['ID'].">";
+					echo"<input type='hidden' name='name' value=".$this_row['name'].">";
+					echo"<input type='hidden' name='school' value=".$this_row['school'].">";
+					echo"<input type='hidden' name='field' value=".$this_row['field'].">";
 					echo"<input type='hidden' name='status' value=".$this_row['status'].">";
 					if($_SESSION['status']>$this_row['status'])
 						{
