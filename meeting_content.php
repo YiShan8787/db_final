@@ -38,29 +38,7 @@ width: 30vw;
 					<input class = "btn btn-outline-info btn-sm" type="submit" name="學生資訊" value="學生資訊">
 				</form>
 			</div>
-			<div class="col-auto mr-auto" style="margin: 5px">
-				<form action="" method="get">
-					<?php
-					if(isset($_GET['keywords']))
-					{
-						if($_GET["keywords"]!="")
-						{
-							echo"<input type='text' name='keywords' value='".$_GET["keywords"]."' >";
-						}
-						else
-						{
-							echo"<input type='text' name='keywords' value='' >";
-						}
-					}
-					else
-						{
-							echo"<input type='text' name='keywords' value='' >";
-						}
-					?>
-					
-					<input type="submit" name="searchButton" value="search">
-				</form>
-			</div>
+			
 			<?php
 			if(isset($_SESSION['account']) && $_SESSION['account'])
 			{
@@ -96,7 +74,10 @@ width: 30vw;
 <?php
     include_once "db_conn.php";
 
-	
+	$time=$_GET['time'];
+	$mdate=$_GET['m_date'];
+	echo "<script>console.log('time:".$time."' );</script>";
+	echo "<script>console.log('date:".$mdate."' );</script>";
 	if(!isset($_SESSION['account'])) //若不存在此變數，代表沒登入
 	{
 		echo"<div class = 'row align-items-end'>
@@ -114,7 +95,7 @@ width: 30vw;
 		if(isset($_SESSION['status']) && $_SESSION['status']>0)	
 			{
 				echo"<form  action='meeting_content_edit.php' method='get'>
-						<input class='btn btn-outline-secondary' type='submit' name='edit' value='edit'>
+						<input class='btn btn-outline-secondary' disabled type='submit' name='edit' value='edit'>
 					</form>";
 			}
 			else
@@ -144,7 +125,7 @@ width: 30vw;
 	
 		if(isset($_GET['searchButton']) && $_GET['searchButton'] == 'search')
 				{	
-					echo "<script>console.log('searchButton is clicked' );</script>";
+					/*echo "<script>console.log('searchButton is clicked' );</script>";
 					$searchvalue=$_GET["keywords"];
 					$query=("select * from meeting_content where m_date Like '%".$searchvalue."%' OR time Like '%".$searchvalue."%' OR description Like '%".$searchvalue."%' OR duration Like '%".$searchvalue."%' OR announcer Like '%".$searchvalue."%'");
 					$stmt = $db->prepare($query);
@@ -164,25 +145,25 @@ width: 30vw;
 					    	echo"</tr>";				    	
 						
 				
-					}
+					}*/
 			}
 			else{
-				    $query = ("select * from meeting_content");
+					
+					
+				    $query = ("select * from meeting_content where m_date='$mdate' AND time='$time' ");
 				    $stmt = $db->prepare($query);
 				    $stmt -> execute();
 				    $result = $stmt -> fetchAll();
+
 				    echo"<tbody >";
 				    foreach($result as $this_row)
 				    {
-				    	$query2=("select * from teacher where ID=".$this_row['host']."");
-						$stmt2 = $db->prepare($query2);
-						$stmt2 -> execute();
-						$result2 = $stmt2 -> fetchAll();
-						foreach($result2 as $this_row2)
-						{
-							if(isset($this_row2['status']) )	
+				    	
+						
+						
+							if(isset($this_row['status']) )	
 					  		{
-						  		switch($this_row2['status'])//邱:不要刪
+						  		switch($this_row['status'])//邱:不要刪
 						    	{
 						    		case 0:echo"<tr style='background-color:#d4feff'>";break;
 						    		case 1:echo"<tr style='background-color:#d4feff'>";break;
@@ -195,7 +176,7 @@ width: 30vw;
 						    {
 						    	echo"<tr>";
 						    }
-						}
+						
 					    
 					    
 					    	//echo"<tr>";
@@ -206,7 +187,8 @@ width: 30vw;
 							echo"<td >".$this_row['host']."</td>";
 							
 					    	echo"</tr>";
-				    }
+					    }
+				    
 				}
 				
     		echo"</tbody>";

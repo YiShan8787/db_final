@@ -27,6 +27,9 @@ if (preg_match("/pm/i", $am_or_pm))
 $time=$hour.$minute.'00';
 echo "<script>console.log('Debug Objects: " . $date . "' );</script>";
 echo "<script>console.log('Debug Objects: " . $time . "' );</script>";
+echo "<script>console.log('Debug Objects place: " . $place . "' );</script>";
+echo "<script>console.log('Debug Objects detail: " . $detail . "' );</script>";
+echo "<script>console.log('Debug Objects host: " . $host . "' );</script>";
 echo "<script>console.log('Debug account: " . $_SESSION['account'] . "' );</script>";
    $query=("insert into meeting_info values(?,?,?,?,?)");
    $stmt=$db->prepare($query);

@@ -80,14 +80,14 @@
 					{
 						$ID=$this_row['ID'];
 						$name=$this_row['name'];
-						echo"<a href='javascript:func1(".$ID.");' class='dropdown-item' type='get' name='selectName' value='' >".$name."</a>";	
-						echo"<input type='hidden' name='teacherName' id='teacherName' value=''>";
+						echo"<a href='javascript:func1(".$ID.",".$name.");' class='dropdown-item' type='get' name='selectName' value='' >".$name."</a>";	
+						
 						
 					}	
 				echo"<script>
-						function func1(ID)
+						function func1(ID,tname)
 						{
-							$('#droptxt').html('".$name."');$('#teacherName').val('".$ID."');
+							$('#droptxt').html(tname);$('#teacherName').val(ID);
 							
 						}
 					</script>";					
@@ -109,6 +109,7 @@
 			    <input type='text' name='duration' class='form-control col-sm-2' />
 
 			  </div>
+			  <input type='hidden' name='teacherName' id='teacherName' value=''>
 				<button type='submit' class='btn btn-primary'>Submit</button>
 				</form>
 			</div>
