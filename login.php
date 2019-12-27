@@ -76,7 +76,9 @@ if ($account && $passowrd)
             }
             if($key == "status")
             {
+
                 $_SESSION['status'] = $value;
+                 echo "<script>console.log('Debug status:" . $_SESSION['status'] . "' );</script>";
             }
         }
         //成功就跳轉

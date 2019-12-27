@@ -4,6 +4,9 @@
 $times=$_POST["time"];
 $description=$_POST["description"];
 $duration=$_POST["duration"];
+$place=$_POST["place"];
+$detail=$_POST["detail"];
+$host=$_POST["teacherName"];
 $output = explode(" ", $times);
 $date=$output[0];
 $time=$output[1];
@@ -28,5 +31,8 @@ echo "<script>console.log('Debug account: " . $_SESSION['account'] . "' );</scri
    $query=("insert into meeting_info values(?,?,?,?,?)");
    $stmt=$db->prepare($query);
    $stmt->execute(array($date,$time,$description,$duration,$_SESSION['account']));
+   $query2=("insert into meeting_content values(?,?,?,?,?)");
+   $stmt2=$db->prepare($query2);
+   $stmt2->execute(array($date,$time,$place,$detail,$host));
 header('Location:meeting_info.php')
 ?>

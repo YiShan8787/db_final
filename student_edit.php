@@ -113,7 +113,10 @@
     	echo"<form class='form-group' action='student_modify.php' method='get'>";
     	if(isset($_SESSION['account']) && $_SESSION['account'])
 		{
-			
+			echo "<script>console.log('Debug account:" . $_SESSION['account'] . "' );</script>";
+			echo "<script>console.log('Debug id:" . $this_row['ID'] . "' );</script>";
+			if(isset($_SESSION['status']) && $_SESSION['status'])
+			echo "<script>console.log('Debug status:" . $_SESSION['status'] . "' );</script>";
 			if(($_SESSION['account']==$this_row['ID']&&$_SESSION['status']!=3)||($_SESSION['status']==3&&$this_row['status']<3))//自己跟管理員可以修改資料
 			{
 				echo"<th scope='row'><input class='form-control form-control-sm' type='text' name='m_ID' value=".$id_tmp." ></th>";

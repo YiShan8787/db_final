@@ -83,6 +83,7 @@
             {
                 echo '註冊成功';
                 $_SESSION['account'] = $account;
+                 $_SESSION['status'] = 0;
                 echo '<meta http-equiv=REFRESH CONTENT=0;url=index.php>';
             }
             else

@@ -63,15 +63,52 @@
 				autocomplete='off'/>
 				
 				<div class='form-group'>
-					<label for='description'>描述</label></br>
-					<textarea name='description' class='form-control' aria-label='With textarea'></textarea>
+			    <label for='place'>地點</label></br>
+			    <input type='text' name='place' class='form-control col-sm-2' />
 
-				</div>
-				<div class='form-group'>
-					<label for='description'>時間長度</label></br>
-					<input type='text' name='duration' class='form-control col-sm-2' />
+			  </div>
+			  <div class='form-group'>
+			  	<label for='place'>主辦人</label></br>
+			  	<button type='button' class='btn btn-primary dropdown-toggle btn-sm  '' id='droptxt' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' >主講人</button>
+				  <div class='dropdown-menu'>
+				  ";
+				  $query=("select * from teacher ");
+					$stmt = $db->prepare($query);
+					$stmt -> execute();
+					$result = $stmt -> fetchAll();
+					foreach($result as $this_row)
+					{
+						$ID=$this_row['ID'];
+						$name=$this_row['name'];
+						echo"<a href='javascript:func1(".$ID.");' class='dropdown-item' type='get' name='selectName' value='' >".$name."</a>";	
+						echo"<input type='hidden' name='teacherName' id='teacherName' value=''>";
+						
+					}	
+				echo"<script>
+						function func1(ID)
+						{
+							$('#droptxt').html('".$name."');$('#teacherName').val('".$ID."');
+							
+						}
+					</script>";					
+				 echo"
+				  </div>
+			  </div>
+			  <div class='form-group'>
+			    <label for='description'>標題</label></br>
+			    <textarea name='description' class='form-control' aria-label='With textarea'></textarea>
 
-				</div>
+			  </div>
+			  <div class='form-group'>
+			    <label for='detail'>描述</label></br>
+			    <textarea name='detail' class='form-control' aria-label='With textarea'></textarea>
+
+			  </div>
+			  <div class='form-group'>
+			    <label for='description'>時間長度</label></br>
+			    <input type='text' name='duration' class='form-control col-sm-2' />
+
+			  </div>
 				<button type='submit' class='btn btn-primary'>Submit</button>
 				</form>
 			</div>
