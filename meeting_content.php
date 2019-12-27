@@ -15,7 +15,7 @@
 <style>
 .table th
 {
-width: 25vh;
+width: 30vw;
 }
 
 </style>
