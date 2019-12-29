@@ -17,12 +17,19 @@
     }
     @media screen and (max-width:550px){
        [class = "row justify-content-center border border-gray rounded mx-auto p-5"]{
-        margin-top:50px;
+        margin-top:30px;
        }   
     }
 </style>
 
 <body>
+    <div class = "container">
+        <div class = "row justify-content-start">
+            <div class = "p-2 col-md-auto col-sm-auto">
+                <a class = "btn btn-md btn-outline-primary" href = "index.php" role = "button">回首頁</a>
+            </div>            
+        </div>
+    </div>
     <div class = "container">
         <form name="login" action="register.php" method="post">
             <div class = "row justify-content-center border border-gray rounded mx-auto p-5">

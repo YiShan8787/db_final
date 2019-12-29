@@ -23,9 +23,9 @@
 </style>
 
 <body>
-    <div class = "container p-3">
-        <div class = "row-auto row justify-content-start">
-            <div class = "col-md-auto col-sm-auto">
+    <div class = "container">
+        <div class = "row justify-content-start">
+            <div class = "p-2 col-md-auto col-sm-auto">
                 <a class = "btn btn-md btn-outline-primary" href = "index.php" role = "button">回首頁</a>
             </div>            
         </div>
