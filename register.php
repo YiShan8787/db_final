@@ -3,108 +3,98 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel='stylesheet' href='style.css'>
+    <meta name = "viewport" content = "width = device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>註冊</title>
 </head>
+
+<style>
+    @media screen and (min-width:850px){
+        [class = "row justify-content-center border border-gray rounded mx-auto p-5"]{
+            width:65%;
+            margin-top:100px;
+        }
+    }
+    @media screen and (max-width:550px){
+       [class = "row justify-content-center border border-gray rounded mx-auto p-5"]{
+        margin-top:50px;
+       }   
+    }
+</style>
+
 <body>
     <div class = "container">
-            <form name="login" action="register.php" method="post">
-                <div class = "row justify-content-center border border-gray rounded mx-auto p-5" style = "margin-top:100px;">
-                <div class="row align-items-center justify-content-center">
-                    <div class = "col-md-auto">
-                        <h1>註冊</h1>
-                    </div>
-                    <div class = "w-100"></div>
-                    <div class = "col-md-10">
-                        <div class = "m-3 input-group">
-                            
-                            <input type=text class = "form-control" id="account_id" name="account" placeholder = "使用者名稱">
-                           
+        <form name="login" action="register.php" method="post">
+            <div class = "row justify-content-center border border-gray rounded mx-auto p-5">
+                <div class = "my-3 col-mx-auto">
+                    <h1>註冊</h1>
+                </div>
+                <div class = "w-100"></div>
+                <div class = "col-md-auto" >
+                    <div class = "my-3 input-group">   
+                        <div class = "input-group-prepend">
+                            <span class = "px-3 input-group-text font-weight-light" id = "username">使用者名稱:</span>
                         </div>
+                        <input type=text class = "form-control" id="account_id" name="account" aria-label = "username" aria-describedby = "username" placeholder = "使用者名稱">
                     </div>
-                    <div class = "w-100"></div>
-                    <div class = "col-md-10">
-                        <div class = "m-3 input-group">
-                            
-                            <input type=password class = "form-control" name="password" placeholder = "密碼">
+                </div>
+                <div class = "w-100"></div>
+                <div class = "col-md-auto">
+                    <div class = "my-3 input-group">
+                        <div class = "input-group-prepend">
+                            <span class = "input-group-text font-weight-light" style = "padding-left:40px;padding-right:40px;" id = "password">密碼:</span>
                         </div>
+                        <input type=password class = "form-control" name="password" aria-label = "password" aria-describedby = "password" placeholder = "密碼">
                     </div>
-                     <div class = "col-md-10">
-                        <div class = "m-3 input-group">
-                            
-                            <input type=password class = "form-control" name="repassword" placeholder = "請再次輸入密碼">
+                </div>
+                <div class = "w-100"></div>
+                <div class = "col-md-auto">
+                    <div class = "my-3 input-group">
+                        <div class = "input-group-prepend">
+                            <span class = "px-0 input-group-text font-weight-light" id = "repassword">請再次輸入密碼:</span>
                         </div>
+                        <input type=password class = "form-control" name="repassword" aria-label = "repassword" aria-describedby = "repassword" placeholder = "請再次輸入密碼">
                     </div>
-                     <div class = "col-md-10">
-                        <div class = "m-3 input-group">
-                            
-                            <input type=text class = "form-control" name="name" placeholder = "姓名">
+                </div>
+                <div class = "w-100"></div>
+                <div class = "col-md-auto">
+                    <div class = "my-3 input-group">
+                        <div class = "input-group-prepend">
+                            <span class = "input-group-text font-weight-light" style = "padding-left:40px;padding-right:40px;" id = "name">姓名:</span>
                         </div>
+                        <input type=text class = "form-control" name="name" aria-label = "name" aria-describedby = "name" placeholder = "姓名">
                     </div>
-                     <div class = "col-md-10">
-                        <div class = "m-3 input-group">
-                            
-                             <input type=text class = "form-control" name="school" placeholder = "學校">
+                </div>
+                <div class = "w-100"></div>
+                <div class = "col-md-auto">
+                    <div class = "my-3 input-group">
+                        <div class = "input-group-prepend">
+                            <span class = "input-group-text font-weight-light" style = "padding-left:40px;padding-right:40px;" id = "school">學校:</span>
                         </div>
+                        <input type=text class = "form-control" name="school" aria-label = "school" aria-describedby = "school" placeholder = "學校">
                     </div>
-                    <div class = "col-md-10">
-                        <div class = "m-3 input-group">
-                            
-                             <input type=text class = "form-control" name="field" placeholder = "領域">
+                </div>
+                <div class = "w-100"></div>
+                <div class = "col-md-auto">
+                    <div class = "my-3 input-group">
+                        <div class = "input-group-prepend">
+                            <span class = "input-group-text font-weight-light" style = "padding-left:40px;padding-right:40px;" id = "field">領域:</span>
                         </div>
+                        <input type=text class = "form-control" name="field" aria-label = "field" aria-describedby = "field" placeholder = "領域">
                     </div>
-                    <div class = "col-md-10">
-                        <div class = "m-3 input-group">
-                            
-                             <label>
-                                <input type = checkbox name = "checkbox">我已詳閱<a href="">條款細則</a>
-                            </label>
-                        </div>
-                    </div>
-                    <div class = "col-md-10">
-                        <div class = "m-3 input-group">
-                            
-                             <input class = "btn btn-primary" type="submit" name="submit" value="註冊">
-                        </div>
-                    </div>
-
-
-                    
-                   <!-- <div class = "w-100"></div>
-                    <div class = "col-md-auto">
-                        <input type=password name="password" placeholder = "密碼">
-                    </div>
-                    <div class = "w-100"></div>
-                    <div class = "col-md-auto">
-                        <input type=password name="repassword" placeholder = "請再次輸入密碼">
-                    </div>
-                    <div class = "w-100"></div>
-                    <div class = "col-md-auto">
-                        <input type=text name="name" placeholder = "姓名">
-                    </div>
-                    <div class = "w-100"></div>
-                    <div class = "col-md-auto">
-                        <input type=text name="school" placeholder = "學校">
-                    </div>
-                    <div class = "w-100"></div>
-                    <div class = "col-md-auto">
-                        <input type=text name="field" placeholder = "領域">
-                    </div>
-                    <div class = "w-100"></div>
-                    <div class = "col-md-auto">
-                    <label>
+                </div>
+                <div class = "w-100"></div>
+                <div class = "col-mx-auto">                            
+                    <label class = "my-3">
                         <input type = checkbox name = "checkbox">我已詳閱<a href="">條款細則</a>
                     </label>
-                    </div>
-                    <div class = "w-100"></div>
-                    <div class = "col-md-auto">
-                        <input class = "btn btn-primary" type="submit" name="submit" value="註冊">
-                    </div>
-                -->
                 </div>
-               </div> 
-            </form>        
+                <div class = "w-100"></div>
+                <div class = "my-3 col-mx-auto">                            
+                    <input class = "btn btn-primary" type="submit" name="submit" value="註冊">
+                </div>
+            </div>               
+        </form>        
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

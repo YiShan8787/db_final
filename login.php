@@ -11,7 +11,13 @@
 <style>
    @media screen and (min-width:850px){
        [class = "row justify-content-center border border-gray rounded mx-auto p-5"]{
-        width:50%;
+        width:65%;
+        margin-top:100px;
+       }   
+    }
+    @media screen and (max-width:550px){
+       [class = "row justify-content-center border border-gray rounded mx-auto p-5"]{
+        margin-top:50px;
        }   
     }
 </style>
@@ -23,33 +29,26 @@
                 <a class = "btn btn-md btn-outline-primary" href = "index.php" role = "button">回首頁</a>
             </div>            
         </div>
-    <div class = "container p-3">        
+    </div>
+    <div class = "container">        
         <form name="login" action="login.php" method="post">
-            <div class = "row justify-content-center border border-gray rounded mx-auto p-5" style = "margin-top:100px;">
+            <div class = "row justify-content-center border border-gray rounded mx-auto p-5">
             
-                <div class = "col-md-auto">
+                <div class = "my-3 col-mx-auto">
                     <h1>登入</h1>
                 </div>
-                <!--<div class = "w-100"></div>
-                <div class = "col-md-auto" style = "margin-right:100px;">
-                    <span class = "font-weight-light">使用者名稱:</span>
-                </div>-->
                 <div class = "w-100"></div>
-                <div class = "col-md-10">
-                    <div class = "m-3 input-group">
+                <div class = "col-md-auto">
+                    <div class = "my-3 input-group">
                         <div class = "input-group-prepend">
                             <span class = "px-0 input-group-text font-weight-light" id = "username">使用者名稱:</span>
                         </div>
                         <input type=text class = "form-control" name="account" aria-label = "username" aria-describedby = "username">
                     </div>
                 </div>
-                <!--<div class = "w-100"></div>
-                <div class = "col-md-auto" style = "margin-right:141px;">
-                    <span class = "font-weight-light">密 碼:</span>
-                </div>-->
                 <div class = "w-100"></div>
-                <div class = "col-md-10">
-                    <div class = "m-3 input-group">
+                <div class = "col-md-auto">
+                    <div class = "my-3 input-group">
                         <div class = "input-group-prepend">
                             <span class = "px-4 input-group-text font-weight-light" id = "password">密碼:</span>
                         </div>
@@ -57,7 +56,7 @@
                     </div>
                 </div>
                 <div class = "w-100"></div>
-                <div class = "col-md-auto" style = "margin-top:5px;">
+                <div class = "my-3 col-mx-auto">
                     <input class = "btn btn-primary" type="submit" name="submit" value="登入">
                 </div>
             </div>        
