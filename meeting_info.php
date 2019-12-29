@@ -23,6 +23,11 @@ width: 25vh;
 <body>
 	<div class="container">	
   		<div class="row justify-content-start">
+
+            <div class = "col-md-auto col-sm-auto">
+                <a class = "btn btn-md btn-outline-primary" href = "index.php" role = "button">回首頁</a>
+            </div>            
+       
             <div class="col-auto" style="margin: 5px">
 			    <form action="meeting_info.php" method="get">
 					<input class = "btn btn-outline-info btn-sm" type="submit" name="開會資訊" value="開會資訊">
