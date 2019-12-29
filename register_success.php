@@ -3,64 +3,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name = "viewport" content = "width = device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>註冊成功</title>
 </head>
+
+<style>
+    @media screen and (min-width:850px){
+        [class = "row justify-content-center border border-gray rounded mx-auto p-5"]{
+            width:65%;
+            margin-top:100px;
+        }
+    }
+    @media screen and (max-width:550px){
+       [class = "row justify-content-center border border-gray rounded mx-auto p-5"]{
+        margin-top:30px;
+       }   
+    }
+</style>
+
 <body>
     <div class = "container">
-            <form name="login" action="register.php" method="post">
-                <div class = "row justify-content-center border border-gray rounded mx-auto p-5" style = "margin-top:100px;">
-                <div class="row align-items-center justify-content-center">
-                    <div class = "col-md-auto">
-                        <h1>註冊成功</h1>
-                    </div>
-                    <div class = "w-100"></div>
-                    <div class = "col-md-auto mt-2">             
-                       <a class = "btn btn-md btn-outline-primary" href = "index.php" role = "button">回首頁</a>
-                    </div>
-                    <div class = "w-100"></div>
-                    <div class = "w-100"></div>
-                    <div class = "col-md-auto mt-2">  
-                        <a class = "btn btn-md btn-outline-primary" href = "login.php" role = "button">登入頁面</a>
-                    </div>
-                    
-
-
-                    
-                   <!-- <div class = "w-100"></div>
-                    <div class = "col-md-auto">
-                        <input type=password name="password" placeholder = "密碼">
-                    </div>
-                    <div class = "w-100"></div>
-                    <div class = "col-md-auto">
-                        <input type=password name="repassword" placeholder = "請再次輸入密碼">
-                    </div>
-                    <div class = "w-100"></div>
-                    <div class = "col-md-auto">
-                        <input type=text name="name" placeholder = "姓名">
-                    </div>
-                    <div class = "w-100"></div>
-                    <div class = "col-md-auto">
-                        <input type=text name="school" placeholder = "學校">
-                    </div>
-                    <div class = "w-100"></div>
-                    <div class = "col-md-auto">
-                        <input type=text name="field" placeholder = "領域">
-                    </div>
-                    <div class = "w-100"></div>
-                    <div class = "col-md-auto">
-                    <label>
-                        <input type = checkbox name = "checkbox">我已詳閱<a href="">條款細則</a>
-                    </label>
-                    </div>
-                    <div class = "w-100"></div>
-                    <div class = "col-md-auto">
-                        <input class = "btn btn-primary" type="submit" name="submit" value="註冊">
-                    </div>
-                -->
+        <form name="login" action="register.php" method="post">
+            <div class = "row justify-content-center border border-gray rounded mx-auto p-5" style = "margin-top:100px;">
+                <div class = "my-3 col-mx-auto">
+                    <h1>註冊成功</h1>
                 </div>
-               </div> 
-            </form>        
+                <div class = "w-100"></div>
+                <div class = "my-3 col-mx-auto">             
+                   <a class = "btn btn-md btn-outline-primary" href = "index.php" role = "button">回首頁</a>
+                </div>
+                <div class = "w-100"></div>
+                <div class = "w-100"></div>
+                <div class = "my-3 col-mx-auto">  
+                    <a class = "btn btn-md btn-outline-primary" href = "login.php" role = "button">登入頁面</a>
+                </div>
+            </div> 
+        </form>        
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
