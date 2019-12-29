@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>註冊</title>
+    <title>註冊成功</title>
 </head>
 <body>
     <div class = "container">
@@ -12,61 +12,18 @@
                 <div class = "row justify-content-center border border-gray rounded mx-auto p-5" style = "margin-top:100px;">
                 <div class="row align-items-center justify-content-center">
                     <div class = "col-md-auto">
-                        <h1>註冊</h1>
+                        <h1>註冊成功</h1>
                     </div>
                     <div class = "w-100"></div>
-                    <div class = "col-md-10">
-                        <div class = "m-3 input-group">
-                            
-                            <input type=text class = "form-control" name="account" placeholder = "使用者名稱">
-                            
-                        </div>
+                    <div class = "col-md-auto mt-2">             
+                       <a class = "btn btn-md btn-outline-primary" href = "index.php" role = "button">回首頁</a>
                     </div>
                     <div class = "w-100"></div>
-                    <div class = "col-md-10">
-                        <div class = "m-3 input-group">
-                            
-                            <input type=password class = "form-control" name="password" placeholder = "密碼">
-                        </div>
+                    <div class = "w-100"></div>
+                    <div class = "col-md-auto mt-2">  
+                        <a class = "btn btn-md btn-outline-primary" href = "login.php" role = "button">登入頁面</a>
                     </div>
-                     <div class = "col-md-10">
-                        <div class = "m-3 input-group">
-                            
-                            <input type=password class = "form-control" name="repassword" placeholder = "請再次輸入密碼">
-                        </div>
-                    </div>
-                     <div class = "col-md-10">
-                        <div class = "m-3 input-group">
-                            
-                            <input type=text class = "form-control" name="name" placeholder = "姓名">
-                        </div>
-                    </div>
-                     <div class = "col-md-10">
-                        <div class = "m-3 input-group">
-                            
-                             <input type=text class = "form-control" name="school" placeholder = "學校">
-                        </div>
-                    </div>
-                    <div class = "col-md-10">
-                        <div class = "m-3 input-group">
-                            
-                             <input type=text class = "form-control" name="field" placeholder = "領域">
-                        </div>
-                    </div>
-                    <div class = "col-md-10">
-                        <div class = "m-3 input-group">
-                            
-                             <label>
-                                <input type = checkbox name = "checkbox">我已詳閱<a href="">條款細則</a>
-                            </label>
-                        </div>
-                    </div>
-                    <div class = "col-md-10">
-                        <div class = "m-3 input-group">
-                            
-                             <input class = "btn btn-primary" type="submit" name="submit" value="註冊">
-                        </div>
-                    </div>
+                    
 
 
                     
@@ -144,7 +101,7 @@
                 echo '註冊成功';
                 //$_SESSION['account'] = $account;
                  $_SESSION['status'] = 0;
-                echo '<meta http-equiv=REFRESH CONTENT=0;url=register_success.php>';
+                echo '<meta http-equiv=REFRESH CONTENT=0;url=login.php>';
             }
             else
             {
