@@ -14,22 +14,28 @@
     <title>meetingDB</title>
 	</head>
 	
+	<style>
+		.col-auto
+		{
+			margin:5px;
+		}
+	</style>
 	
 	<div class='container'>
-  		<div class='row '>
-            <div class='col-auto '>
+  		<div class='row align-items-center justify-content-center'>
+            <div class='col-auto'> 
 			    <form action='meeting_info.php' method='get'>
-					<input type='submit' name='開會資訊' value='開會資訊'>
+					<input class = 'btn btn-outline-info btn-sm' type='submit' name='開會資訊' value='開會資訊'>
 				</form>
 			</div>
-			<div class='col-auto '>
+			<div class='col-auto'>
 				<form action='teacher.php' method='get'>
-					<input type='submit' name='老師資訊' value='老師資訊'>
+					<input class = 'btn btn-outline-info btn-sm' type='submit' name='老師資訊' value='老師資訊'>
 				</form>
 			</div>
 			<div class='col-auto '>
 				<form action='student.php' method='get'>
-					<input type='submit' name='學生資訊' value='學生資訊'>
+					<input class = 'btn btn-outline-info btn-sm' type='submit' name='學生資訊' value='學生資訊'>
 				</form>
 			</div>
 			<div class='col-auto '>
@@ -44,7 +50,7 @@
 			
 		
 		<div class='col custom-table-width'style='  '>
-			<div class='row'>
+			<div class='px-3 row'>
 				<div class='button_meeting_add'>
 					
 						<form  action='meeting_add.php' method='get'>
