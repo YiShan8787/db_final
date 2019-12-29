@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel='stylesheet' href='style.css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>註冊</title>
 </head>
@@ -18,8 +19,8 @@
                     <div class = "col-md-10">
                         <div class = "m-3 input-group">
                             
-                            <input type=text class = "form-control" name="account" placeholder = "使用者名稱">
-                            
+                            <input type=text class = "form-control" id="account_id" name="account" placeholder = "使用者名稱">
+                           
                         </div>
                     </div>
                     <div class = "w-100"></div>
@@ -135,24 +136,37 @@
     {
         if($account != null && $password != null && $repassword != null&& $name != null&& $school != null && $field != null&& $password == $repassword)
         {
-            //新增資料進資料庫
-            $query = ("insert into student (ID,name,school,field, password, is_online,status) values ('$account','$name','$school','$field', '$password', 1,0)");
-            $stmt = $db->prepare($query);
-            $result = $stmt -> execute();
-            if($result)
-            {
-                echo '註冊成功';
-                //$_SESSION['account'] = $account;
-                 $_SESSION['status'] = 0;
-                echo '<meta http-equiv=REFRESH CONTENT=0;url=register_success.php>';
-            }
-            else
-            {
-                echo '註冊失敗';
-                echo "
-                <script>setTimeout(function(){window.location.href='register.php';},1000);</script>
-                ";//如果錯誤使用js 1秒後跳轉到註冊頁面重試;
-                exit();
+             $query = ("SELECT ID FROM student WHERE ID=?");
+              $stmt = $db->prepare($query);
+              $error = $stmt->execute(array($account));
+              $result = $stmt->fetchALl();
+              if(count($result) > 0){
+                echo "<script>document.getElementById('account_id').placeholder = '帳號已存在';</script>";
+                echo "<script>document.getElementById('account_id').placeholder = '帳號已存在';</script>";
+                echo "<script>document.getElementById('account_id').className += ' border border-danger';</script>";
+                $isWrong = 1;
+                $isAccountWrong = 1;
+              }
+                else{
+                //新增資料進資料庫
+                $query = ("insert into student (ID,name,school,field, password, is_online,status) values ('$account','$name','$school','$field', '$password', 1,0)");
+                $stmt = $db->prepare($query);
+                $result = $stmt -> execute();
+                if($result)
+                {
+                    echo '註冊成功';
+                    //$_SESSION['account'] = $account;
+                     $_SESSION['status'] = 0;
+                    echo '<meta http-equiv=REFRESH CONTENT=0;url=register_success.php>';
+                }
+                else
+                {
+                    echo '註冊失敗';
+                    echo "
+                    <script>setTimeout(function(){window.location.href='register.php';},1000);</script>
+                    ";//如果錯誤使用js 1秒後跳轉到註冊頁面重試;
+                    exit();
+                }
             }
         }
     }
