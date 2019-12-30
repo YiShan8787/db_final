@@ -21,12 +21,25 @@ width: 30vw;
 {
 margin: 5px;
 }
+body
+{
 
+	background-image: url('bg.jpg');
+	 background-repeat: no-repeat;
+	  background-attachment: fixed;
+  background-size: cover;
+  background-blend-mode: lighten;
+  background-color: rgba(255,255,255,0.5);
+    
+}
+.container
+{
+}
 </style>
 
-  <body>
-  	<div class="container">
-  		<div class="row align-items-center justify-content-center">
+  <body >
+  	<div class="container" >
+  		<div class="row align-items-center justify-content-center" >
             <div class="col-auto ">
 			    <form action="meeting_info.php" method="get">
 					<input class = "btn btn-outline-info btn-sm" type="submit" name="開會資訊" value="開會資訊">

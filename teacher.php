@@ -11,7 +11,17 @@
 
     <title>meetingDB</title>
 </head>
-	
+	<style>
+		body
+		{
+			background-image: url('bg.jpg');
+			 background-repeat: no-repeat;
+			  background-attachment: fixed;
+		  background-size: cover;
+		   background-blend-mode: lighten;
+  background-color: rgba(255,255,255,0.5);
+		}
+	</style>
 
 <body>
 	<div class="container">	
