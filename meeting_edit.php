@@ -67,6 +67,8 @@
 				      	<th scope='col'>Time</th>
 				      	<th scope='col'>Description</th>
 						<th scope='col'>Duration</th>
+						<th scope='col'>Announcer</th>
+						<th scope='col'></th>
 
 				      	<th scope='col'></th>
 			    	</tr>
