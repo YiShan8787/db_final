@@ -142,7 +142,7 @@ body
 					if($searchfor=='All')
 					{
 						echo "<script>console.log('0' );</script>";
-						$query=("select * from meeting_info NATURAL JOIN student where m_date Like '%".$searchvalue."%' OR time Like '%".$searchvalue."%' OR description Like '%".$searchvalue."%' OR duration Like '%".$searchvalue."%' OR ID Like '%".$searchvalue."%' OR name Like '%".$searchvalue."%' OR school Like '%".$searchvalue."%' OR field Like '%".$searchvalue."%'");
+						$query=("select * from meeting_info as a LEFT JOIN student as b on a.announcer = b.ID where m_date Like '%".$searchvalue."%' OR time Like '%".$searchvalue."%' OR description Like '%".$searchvalue."%' OR duration Like '%".$searchvalue."%' OR ID Like '%".$searchvalue."%' OR name Like '%".$searchvalue."%' OR school Like '%".$searchvalue."%' OR field Like '%".$searchvalue."%'");
 				      	echo"<th scope='col'>Date</th>";
 				      	echo"<th scope='col'>Time</th>";
 				      	echo"<th scope='col'>Description</th>";
