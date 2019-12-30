@@ -19,6 +19,15 @@
 		{
 			margin:5px;
 		}
+		body
+		{
+			background-image: url('bg.jpg');
+			 background-repeat: no-repeat;
+			  background-attachment: fixed;
+		  background-size: cover;
+		   background-blend-mode: lighten;
+  background-color: rgba(255,255,255,0.5);
+		}
 	</style>
 	
 	<div class='container'>
@@ -67,6 +76,8 @@
 				      	<th scope='col'>Time</th>
 				      	<th scope='col'>Description</th>
 						<th scope='col'>Duration</th>
+						<th scope='col'>Announcer</th>
+						<th scope='col'></th>
 
 				      	<th scope='col'></th>
 			    	</tr>

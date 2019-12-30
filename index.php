@@ -21,12 +21,25 @@ width: 30vw;
 {
 margin: 5px;
 }
+body
+{
 
+	background-image: url('bg.jpg');
+	 background-repeat: no-repeat;
+	  background-attachment: fixed;
+  background-size: cover;
+  background-blend-mode: lighten;
+  background-color: rgba(255,255,255,0.5);
+    
+}
+.container
+{
+}
 </style>
 
-  <body>
-  	<div class="container">
-  		<div class="row align-items-center justify-content-center">
+  <body >
+  	<div class="container" >
+  		<div class="row align-items-center justify-content-center" >
             <div class="col-auto ">
 			    <form action="meeting_info.php" method="get">
 					<input class = "btn btn-outline-info btn-sm" type="submit" name="開會資訊" value="開會資訊">
@@ -129,7 +142,7 @@ margin: 5px;
 					if($searchfor=='All')
 					{
 						echo "<script>console.log('0' );</script>";
-						$query=("select * from meeting_info NATURAL JOIN student where m_date Like '%".$searchvalue."%' OR time Like '%".$searchvalue."%' OR description Like '%".$searchvalue."%' OR duration Like '%".$searchvalue."%' OR ID Like '%".$searchvalue."%' OR name Like '%".$searchvalue."%' OR school Like '%".$searchvalue."%' OR field Like '%".$searchvalue."%'");
+						$query=("select * from meeting_info as a LEFT JOIN student as b on a.announcer = b.ID where m_date Like '%".$searchvalue."%' OR time Like '%".$searchvalue."%' OR description Like '%".$searchvalue."%' OR duration Like '%".$searchvalue."%' OR ID Like '%".$searchvalue."%' OR name Like '%".$searchvalue."%' OR school Like '%".$searchvalue."%' OR field Like '%".$searchvalue."%'");
 				      	echo"<th scope='col'>Date</th>";
 				      	echo"<th scope='col'>Time</th>";
 				      	echo"<th scope='col'>Description</th>";
