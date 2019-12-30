@@ -146,7 +146,7 @@
               }
                 else{
                 //新增資料進資料庫
-                $query = ("insert into student (ID,name,school,field, password, is_online,status) values ('$account','$name','$school','$field', '$password', 1,0)");
+                $query = ("insert into student (ID,name,school,field, password, is_online,status) values ('$account','$name','$school','$field', '$password', 0,0)");
                 $stmt = $db->prepare($query);
                 $result = $stmt -> execute();
                 if($result)

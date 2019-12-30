@@ -43,7 +43,7 @@
                         <div class = "input-group-prepend">
                             <span class = "px-0 input-group-text font-weight-light" id = "username">使用者名稱:</span>
                         </div>
-                        <input type=text class = "form-control" name="account" aria-label = "username" aria-describedby = "username">
+                        <input type=text class = "form-control" id="account_id" name="account" aria-label = "username" aria-describedby = "username">
                     </div>
                 </div>
                 <div class = "w-100"></div>
@@ -52,7 +52,7 @@
                         <div class = "input-group-prepend">
                             <span class = "px-4 input-group-text font-weight-light" id = "password">密碼:</span>
                         </div>
-                        <input type=password class = "form-control" name="password" aria-label = "password" aria-describedby = "password">
+                        <input type=password class = "form-control" id="pw" name="password" aria-label = "password" aria-describedby = "password">
                     </div>
                 </div>
                 <div class = "w-100"></div>
@@ -89,10 +89,31 @@ $account = $_POST['account'];//post獲得使用者名稱錶單值
 $passowrd = $_POST['password'];//post獲得使用者密碼單值
 if ($account && $passowrd)
 {//如果使用者名稱和密碼都不為空
-    $query = "select * from student where ID = '$account' and password='$passowrd'";//檢測資料庫是否有對應的account和password的sql
+    $query = "select * from student where ID = '$account' ";//檢測資料庫是否有對應的account和password的sql
     $stmt=$db->prepare($query);
     $stmt->execute();
     $result=$stmt->fetchALL(PDO::FETCH_ASSOC); //PDO::FETCH_CLASS 返回一個物件，以欄位名稱設定屬性，並把設值給該屬性
+    if(count($result) == 0){
+        echo "<script>document.getElementById('account_id').placeholder = '帳號錯誤';</script>";
+       
+        echo "<script>document.getElementById('account_id').className += ' border border-danger';</script>";
+        $isWrong = 1;
+        $isAccountWrong = 1;
+        exit();
+      }
+      $query2 = "select * from student where ID = '$account' and password='$passowrd'";//檢測資料庫是否有對應的account和password的sql
+      $stmt2=$db->prepare($query2);
+      $stmt2->execute();
+      $result2=$stmt2->fetchALL(PDO::FETCH_ASSOC); //PDO::FETCH_CLASS 返回一個物件，以欄位名稱設定屬性，並把設值給該屬性
+      if(count($result2) == 0){
+          echo "<script>document.getElementById('pw').placeholder = '密碼錯誤';</script>";
+         
+          echo "<script>document.getElementById('pw').className += ' border border-danger';</script>";
+          echo "<script>document.getElementById('account_id').value = '".$account."';</script>";
+          $isWrong = 1;
+          $isAccountWrong = 1;
+          exit();
+        }
     foreach($result as $row)
     {//判斷查到的每組資訊
         foreach($row as $key => $value)
@@ -100,35 +121,23 @@ if ($account && $passowrd)
             //echo $key." : ".$value."<br />";
             if($key == "account")
             {
-                if($value ==$account)
-                    echo "帳號正確<br>";
-                else
-                {
-                    echo "帳號錯誤";
-                    echo "
-                    <script>
-                    setTimeout(function(){window.location.href='login.php';},1000);
-                    </script>
-                    ";//如果錯誤使用js 1秒後跳轉到登入頁面重試;
-                    exit();
-                }
+                //if($value ==$account)
+                   // echo "帳號正確<br>";
             }
             if($key == "password")
             {
                 if($value ==$passowrd)
                 {
-                    echo "密碼正確<br>";
+                   // echo "密碼正確<br>";
                     
                 }
                 else
                 {
+                    echo "<script>document.getElementById('pw').placeholder = '密碼錯誤';</script>";
+       
+                    echo "<script>document.getElementById('pw').className += ' border border-danger';</script>";
                     echo "密碼錯誤";
-                    echo "
-                    <script>
-                    setTimeout(function(){window.location.href='login.php';},1000);
-                    </script>
-                    ";//如果錯誤使用js 1秒後跳轉到登入頁面重試;
-                    exit();
+                   
                 }
             }
             if($key == "status")
@@ -141,21 +150,19 @@ if ($account && $passowrd)
         //成功就跳轉
         $_SESSION['account'] = $account;
         //is_online =1
-        $query = "UPDATE student SET is_online= 1 where ID = $account";
+        $query = "UPDATE student SET is_online= 1 where ID = '$account'";
 		$stmt=$db->prepare($query);
 		$stmt->execute();
         $result=$stmt->fetchALL();
         
-        echo "返回主頁中.....";
-        echo '<meta http-equiv=REFRESH CONTENT=2;url=index.php>';
-        if($_SESSION['table'] == 'meeting_info')
+    
+        if(isset($_SESSION['table']) && $_SESSION['table'] == 'meeting_info')
         {
-            echo '<meta http-equiv=REFRESH CONTENT=5;url=meeting_info.php>';
+            echo '<meta http-equiv=REFRESH CONTENT=0;url=meeting_info.php>';
         }
         else
         {
-            //header("location:meeting_info.php/?error=登入成功");
-            echo '<meta http-equiv=REFRESH CONTENT=5;url=index.php>';
+            echo '<meta http-equiv=REFRESH CONTENT=0;url=index.php>';
         }        
     }
 }
